@@ -1,0 +1,1142 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/inikulin/parse5"
+
+    >parse5 (v3.0.2)</a>
+</h1>
+<h4>HTML parsing/serialization toolset for Node.js. WHATWG HTML Living Standard (aka HTML5)-compliant.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.parse5">module parse5</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.ParserStream">
+            function <span class="apidocSignatureSpan">parse5.</span>ParserStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.PlainTextConversionStream">
+            function <span class="apidocSignatureSpan">parse5.</span>PlainTextConversionStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SAXParser">
+            function <span class="apidocSignatureSpan">parse5.</span>SAXParser
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SerializerStream">
+            function <span class="apidocSignatureSpan">parse5.</span>SerializerStream
+            <span class="apidocSignatureSpan">(node, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.parse">
+            function <span class="apidocSignatureSpan">parse5.</span>parse
+            <span class="apidocSignatureSpan">(html, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.parseFragment">
+            function <span class="apidocSignatureSpan">parse5.</span>parseFragment
+            <span class="apidocSignatureSpan">(fragmentContext, html, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.serialize">
+            function <span class="apidocSignatureSpan">parse5.</span>serialize
+            <span class="apidocSignatureSpan">(node, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">parse5.</span>ParserStream.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">parse5.</span>SAXParser.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">parse5.</span>SerializerStream.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">parse5.</span>treeAdapters</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.parse5.ParserStream">module parse5.ParserStream</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.ParserStream.ParserStream">
+            function <span class="apidocSignatureSpan">parse5.</span>ParserStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.ParserStream.super_">
+            function <span class="apidocSignatureSpan">parse5.ParserStream.</span>super_
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.parse5.ParserStream.prototype">module parse5.ParserStream.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.ParserStream.prototype._documentWrite">
+            function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>_documentWrite
+            <span class="apidocSignatureSpan">(html)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.ParserStream.prototype._resume">
+            function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>_resume
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.ParserStream.prototype._runParsingLoop">
+            function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>_runParsingLoop
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.ParserStream.prototype._scriptHandler">
+            function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>_scriptHandler
+            <span class="apidocSignatureSpan">(scriptElement)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.ParserStream.prototype._write">
+            function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>_write
+            <span class="apidocSignatureSpan">(chunk, encoding, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.ParserStream.prototype.end">
+            function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>end
+            <span class="apidocSignatureSpan">(chunk, encoding, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.parse5.PlainTextConversionStream">module parse5.PlainTextConversionStream</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.PlainTextConversionStream.PlainTextConversionStream">
+            function <span class="apidocSignatureSpan">parse5.</span>PlainTextConversionStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.PlainTextConversionStream.super_">
+            function <span class="apidocSignatureSpan">parse5.PlainTextConversionStream.</span>super_
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.parse5.SAXParser">module parse5.SAXParser</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SAXParser.SAXParser">
+            function <span class="apidocSignatureSpan">parse5.</span>SAXParser
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SAXParser.super_">
+            function <span class="apidocSignatureSpan">parse5.SAXParser.</span>super_
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.parse5.SAXParser.prototype">module parse5.SAXParser.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SAXParser.prototype._emitPendingText">
+            function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>_emitPendingText
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SAXParser.prototype._flush">
+            function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>_flush
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SAXParser.prototype._handleToken">
+            function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>_handleToken
+            <span class="apidocSignatureSpan">(token)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SAXParser.prototype._runParsingLoop">
+            function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>_runParsingLoop
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SAXParser.prototype._transform">
+            function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>_transform
+            <span class="apidocSignatureSpan">(chunk, encoding, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SAXParser.prototype.end">
+            function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>end
+            <span class="apidocSignatureSpan">(chunk, encoding, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SAXParser.prototype.stop">
+            function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>stop
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.parse5.SerializerStream">module parse5.SerializerStream</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SerializerStream.SerializerStream">
+            function <span class="apidocSignatureSpan">parse5.</span>SerializerStream
+            <span class="apidocSignatureSpan">(node, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SerializerStream.super_">
+            function <span class="apidocSignatureSpan">parse5.SerializerStream.</span>super_
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.parse5.SerializerStream.prototype">module parse5.SerializerStream.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.parse5.SerializerStream.prototype._read">
+            function <span class="apidocSignatureSpan">parse5.SerializerStream.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.parse5" id="apidoc.module.parse5">module parse5</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.ParserStream" id="apidoc.element.parse5.ParserStream">
+        function <span class="apidocSignatureSpan">parse5.</span>ParserStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ParserStream = function (options) {
+    WritableStream.call(this);
+
+    this.parser = new Parser(options);
+
+    this.lastChunkWritten = false;
+    this.writeCallback = null;
+    this.pausedByScript = false;
+
+    this.document = this.parser.treeAdapter.createDocument();
+
+    this.pendingHtmlInsertions = [];
+
+    this._resume = this._resume.bind(this);
+    this._documentWrite = this._documentWrite.bind(this);
+    this._scriptHandler = this._scriptHandler.bind(this);
+
+    this.parser._bootstrap(this.document, null);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.PlainTextConversionStream" id="apidoc.element.parse5.PlainTextConversionStream">
+        function <span class="apidocSignatureSpan">parse5.</span>PlainTextConversionStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">PlainTextConversionStream = function (options) {
+    ParserStream.call(this, options);
+
+    // NOTE: see https://html.spec.whatwg.org/#read-text
+    this.parser._insertFakeElement($.HTML);
+    this.parser._insertFakeElement($.HEAD);
+    this.parser.openElements.pop();
+    this.parser._insertFakeElement($.BODY);
+    this.parser._insertFakeElement($.PRE);
+    this.parser.treeAdapter.insertText(this.parser.openElements.current, &#x27;\n&#x27;);
+    this.parser.switchToPlaintextParsing();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SAXParser" id="apidoc.element.parse5.SAXParser">
+        function <span class="apidocSignatureSpan">parse5.</span>SAXParser
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAXParser = function (options) {
+    TransformStream.call(this);
+
+    this.options = mergeOptions(DEFAULT_OPTIONS, options);
+
+    this.tokenizer = new Tokenizer(options);
+    this.parserFeedbackSimulator = new ParserFeedbackSimulator(this.tokenizer);
+
+    this.pendingText = null;
+    this.currentTokenLocation = void 0;
+
+    this.lastChunkWritten = false;
+    this.stopped = false;
+
+    // NOTE: always pipe stream to the /dev/null stream to avoid
+    // `highWaterMark` hit even if we don&#x27;t have consumers.
+    // (see: https://github.com/inikulin/parse5/issues/97#issuecomment-171940774)
+    this.pipe(new DevNullStream());
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SerializerStream" id="apidoc.element.parse5.SerializerStream">
+        function <span class="apidocSignatureSpan">parse5.</span>SerializerStream
+        <span class="apidocSignatureSpan">(node, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SerializerStream = function (node, options) {
+    ReadableStream.call(this);
+
+    this.serializer = new Serializer(node, options);
+
+    Object.defineProperty(this.serializer, &#x27;html&#x27;, {
+        //NOTE: To make `+=` concat operator work properly we define
+        //getter which always returns empty string
+        get: function () {
+            return &#x27;&#x27;;
+        },
+        set: this.push.bind(this)
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.parse" id="apidoc.element.parse5.parse">
+        function <span class="apidocSignatureSpan">parse5.</span>parse
+        <span class="apidocSignatureSpan">(html, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(html, options) {
+    var parser = new Parser(options);
+
+    return parser.parse(html);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.parseFragment" id="apidoc.element.parse5.parseFragment">
+        function <span class="apidocSignatureSpan">parse5.</span>parseFragment
+        <span class="apidocSignatureSpan">(fragmentContext, html, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parseFragment(fragmentContext, html, options) {
+    if (typeof fragmentContext === &#x27;string&#x27;) {
+        options = html;
+        html = fragmentContext;
+        fragmentContext = null;
+    }
+
+    var parser = new Parser(options);
+
+    return parser.parseFragment(html, fragmentContext);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.serialize" id="apidoc.element.parse5.serialize">
+        function <span class="apidocSignatureSpan">parse5.</span>serialize
+        <span class="apidocSignatureSpan">(node, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">serialize = function (node, options) {
+    var serializer = new Serializer(node, options);
+
+    return serializer.serialize();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.parse5.ParserStream" id="apidoc.module.parse5.ParserStream">module parse5.ParserStream</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.ParserStream.ParserStream" id="apidoc.element.parse5.ParserStream.ParserStream">
+        function <span class="apidocSignatureSpan">parse5.</span>ParserStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ParserStream = function (options) {
+    WritableStream.call(this);
+
+    this.parser = new Parser(options);
+
+    this.lastChunkWritten = false;
+    this.writeCallback = null;
+    this.pausedByScript = false;
+
+    this.document = this.parser.treeAdapter.createDocument();
+
+    this.pendingHtmlInsertions = [];
+
+    this._resume = this._resume.bind(this);
+    this._documentWrite = this._documentWrite.bind(this);
+    this._scriptHandler = this._scriptHandler.bind(this);
+
+    this.parser._bootstrap(this.document, null);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.ParserStream.super_" id="apidoc.element.parse5.ParserStream.super_">
+        function <span class="apidocSignatureSpan">parse5.ParserStream.</span>super_
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Writable(options) {
+  // Writable ctor is applied to Duplexes, too.
+  // `realHasInstance` is necessary because using plain `instanceof`
+  // would return false, as no `_writableState` property is attached.
+
+  // Trying to use the custom `instanceof` for Writable here will also break the
+  // Node.js LazyTransform implementation, which has a non-trivial getter for
+  // `_writableState` that would lead to infinite recursion.
+  if (!(realHasInstance.call(Writable, this)) &#x26;&#x26;
+      !(this instanceof Stream.Duplex)) {
+    return new Writable(options);
+  }
+
+  this._writableState = new WritableState(options, this);
+
+  // legacy.
+  this.writable = true;
+
+  if (options) {
+    if (typeof options.write === &#x27;function&#x27;)
+      this._write = options.write;
+
+    if (typeof options.writev === &#x27;function&#x27;)
+      this._writev = options.writev;
+  }
+
+  Stream.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.parse5.ParserStream.prototype" id="apidoc.module.parse5.ParserStream.prototype">module parse5.ParserStream.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.ParserStream.prototype._documentWrite" id="apidoc.element.parse5.ParserStream.prototype._documentWrite">
+        function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>_documentWrite
+        <span class="apidocSignatureSpan">(html)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_documentWrite = function (html) {
+    if (!this.parser.stopped)
+        this.pendingHtmlInsertions.push(html);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.ParserStream.prototype._resume" id="apidoc.element.parse5.ParserStream.prototype._resume">
+        function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>_resume
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_resume = function () {
+    if (!this.pausedByScript)
+        throw new Error(&#x27;Parser was already resumed&#x27;);
+
+    while (this.pendingHtmlInsertions.length) {
+        var html = this.pendingHtmlInsertions.pop();
+
+        this.parser.tokenizer.insertHtmlAtCurrentPos(html);
+    }
+
+    this.pausedByScript = false;
+
+    //NOTE: keep parsing if we don&#x27;t wait for the next input chunk
+    if (this.parser.tokenizer.active)
+        this._runParsingLoop();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.ParserStream.prototype._runParsingLoop" id="apidoc.element.parse5.ParserStream.prototype._runParsingLoop">
+        function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>_runParsingLoop
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_runParsingLoop = function () {
+    this.parser.runParsingLoopForCurrentChunk(this.writeCallback, this._scriptHandler);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.ParserStream.prototype._scriptHandler" id="apidoc.element.parse5.ParserStream.prototype._scriptHandler">
+        function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>_scriptHandler
+        <span class="apidocSignatureSpan">(scriptElement)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_scriptHandler = function (scriptElement) {
+    if (this.listeners(&#x27;script&#x27;).length) {
+        this.pausedByScript = true;
+        this.emit(&#x27;script&#x27;, scriptElement, this._documentWrite, this._resume);
+    }
+    else
+        this._runParsingLoop();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.ParserStream.prototype._write" id="apidoc.element.parse5.ParserStream.prototype._write">
+        function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>_write
+        <span class="apidocSignatureSpan">(chunk, encoding, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_write = function (chunk, encoding, callback) {
+    this.writeCallback = callback;
+    this.parser.tokenizer.write(chunk.toString(&#x27;utf8&#x27;), this.lastChunkWritten);
+    this._runParsingLoop();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.ParserStream.prototype.end" id="apidoc.element.parse5.ParserStream.prototype.end">
+        function <span class="apidocSignatureSpan">parse5.ParserStream.prototype.</span>end
+        <span class="apidocSignatureSpan">(chunk, encoding, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function (chunk, encoding, callback) {
+    this.lastChunkWritten = true;
+    WritableStream.prototype.end.call(this, chunk, encoding, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.parse5.PlainTextConversionStream" id="apidoc.module.parse5.PlainTextConversionStream">module parse5.PlainTextConversionStream</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.PlainTextConversionStream.PlainTextConversionStream" id="apidoc.element.parse5.PlainTextConversionStream.PlainTextConversionStream">
+        function <span class="apidocSignatureSpan">parse5.</span>PlainTextConversionStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">PlainTextConversionStream = function (options) {
+    ParserStream.call(this, options);
+
+    // NOTE: see https://html.spec.whatwg.org/#read-text
+    this.parser._insertFakeElement($.HTML);
+    this.parser._insertFakeElement($.HEAD);
+    this.parser.openElements.pop();
+    this.parser._insertFakeElement($.BODY);
+    this.parser._insertFakeElement($.PRE);
+    this.parser.treeAdapter.insertText(this.parser.openElements.current, &#x27;\n&#x27;);
+    this.parser.switchToPlaintextParsing();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.PlainTextConversionStream.super_" id="apidoc.element.parse5.PlainTextConversionStream.super_">
+        function <span class="apidocSignatureSpan">parse5.PlainTextConversionStream.</span>super_
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">super_ = function (options) {
+    WritableStream.call(this);
+
+    this.parser = new Parser(options);
+
+    this.lastChunkWritten = false;
+    this.writeCallback = null;
+    this.pausedByScript = false;
+
+    this.document = this.parser.treeAdapter.createDocument();
+
+    this.pendingHtmlInsertions = [];
+
+    this._resume = this._resume.bind(this);
+    this._documentWrite = this._documentWrite.bind(this);
+    this._scriptHandler = this._scriptHandler.bind(this);
+
+    this.parser._bootstrap(this.document, null);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.parse5.SAXParser" id="apidoc.module.parse5.SAXParser">module parse5.SAXParser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SAXParser.SAXParser" id="apidoc.element.parse5.SAXParser.SAXParser">
+        function <span class="apidocSignatureSpan">parse5.</span>SAXParser
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAXParser = function (options) {
+    TransformStream.call(this);
+
+    this.options = mergeOptions(DEFAULT_OPTIONS, options);
+
+    this.tokenizer = new Tokenizer(options);
+    this.parserFeedbackSimulator = new ParserFeedbackSimulator(this.tokenizer);
+
+    this.pendingText = null;
+    this.currentTokenLocation = void 0;
+
+    this.lastChunkWritten = false;
+    this.stopped = false;
+
+    // NOTE: always pipe stream to the /dev/null stream to avoid
+    // `highWaterMark` hit even if we don&#x27;t have consumers.
+    // (see: https://github.com/inikulin/parse5/issues/97#issuecomment-171940774)
+    this.pipe(new DevNullStream());
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SAXParser.super_" id="apidoc.element.parse5.SAXParser.super_">
+        function <span class="apidocSignatureSpan">parse5.SAXParser.</span>super_
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Transform(options) {
+  if (!(this instanceof Transform))
+    return new Transform(options);
+
+  Duplex.call(this, options);
+
+  this._transformState = new TransformState(this);
+
+  var stream = this;
+
+  // start out asking for a readable event once data is transformed.
+  this._readableState.needReadable = true;
+
+  // we have implemented the _read method, and done the other things
+  // that Readable wants before the first _read call, so unset the
+  // sync guard flag.
+  this._readableState.sync = false;
+
+  if (options) {
+    if (typeof options.transform === &#x27;function&#x27;)
+      this._transform = options.transform;
+
+    if (typeof options.flush === &#x27;function&#x27;)
+      this._flush = options.flush;
+  }
+
+  // When the writable side finishes, then flush out anything remaining.
+  this.once(&#x27;prefinish&#x27;, function() {
+    if (typeof this._flush === &#x27;function&#x27;)
+      this._flush(function(er) {
+        done(stream, er);
+      });
+    else
+      done(stream);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.parse5.SAXParser.prototype" id="apidoc.module.parse5.SAXParser.prototype">module parse5.SAXParser.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SAXParser.prototype._emitPendingText" id="apidoc.element.parse5.SAXParser.prototype._emitPendingText">
+        function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>_emitPendingText
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_emitPendingText = function () {
+    if (this.pendingText !== null) {
+        this.emit(&#x27;text&#x27;, this.pendingText, this.currentTokenLocation);
+        this.pendingText = null;
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SAXParser.prototype._flush" id="apidoc.element.parse5.SAXParser.prototype._flush">
+        function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>_flush
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_flush = function (callback) {
+    callback();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SAXParser.prototype._handleToken" id="apidoc.element.parse5.SAXParser.prototype._handleToken">
+        function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>_handleToken
+        <span class="apidocSignatureSpan">(token)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handleToken = function (token) {
+    if (this.options.locationInfo)
+        this.currentTokenLocation = token.location;
+
+    if (token.type === Tokenizer.START_TAG_TOKEN)
+        this.emit(&#x27;startTag&#x27;, token.tagName, token.attrs, token.selfClosing, this.currentTokenLocation);
+
+    else if (token.type === Tokenizer.END_TAG_TOKEN)
+        this.emit(&#x27;endTag&#x27;, token.tagName, this.currentTokenLocation);
+
+    else if (token.type === Tokenizer.COMMENT_TOKEN)
+        this.emit(&#x27;comment&#x27;, token.data, this.currentTokenLocation);
+
+    else if (token.type === Tokenizer.DOCTYPE_TOKEN)
+        this.emit(&#x27;doctype&#x27;, token.name, token.publicId, token.systemId, this.currentTokenLocation);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SAXParser.prototype._runParsingLoop" id="apidoc.element.parse5.SAXParser.prototype._runParsingLoop">
+        function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>_runParsingLoop
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_runParsingLoop = function () {
+    do {
+        var token = this.parserFeedbackSimulator.getNextToken();
+
+        if (token.type === Tokenizer.HIBERNATION_TOKEN)
+            break;
+
+        if (token.type === Tokenizer.CHARACTER_TOKEN ||
+            token.type === Tokenizer.WHITESPACE_CHARACTER_TOKEN ||
+            token.type === Tokenizer.NULL_CHARACTER_TOKEN) {
+
+            if (this.options.locationInfo) {
+                if (this.pendingText === null)
+                    this.currentTokenLocation = token.location;
+
+                else
+                    this.currentTokenLocation.endOffset = token.location.endOffset;
+            }
+
+            this.pendingText = (this.pendingText || &#x27;&#x27;) + token.chars;
+        }
+
+        else {
+            this._emitPendingText();
+            this._handleToken(token);
+        }
+    } while (!this.stopped &#x26;&#x26; token.type !== Tokenizer.EOF_TOKEN);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SAXParser.prototype._transform" id="apidoc.element.parse5.SAXParser.prototype._transform">
+        function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>_transform
+        <span class="apidocSignatureSpan">(chunk, encoding, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_transform = function (chunk, encoding, callback) {
+    if (!this.stopped) {
+        this.tokenizer.write(chunk.toString(&#x27;utf8&#x27;), this.lastChunkWritten);
+        this._runParsingLoop();
+    }
+
+    this.push(chunk);
+
+    callback();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SAXParser.prototype.end" id="apidoc.element.parse5.SAXParser.prototype.end">
+        function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>end
+        <span class="apidocSignatureSpan">(chunk, encoding, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function (chunk, encoding, callback) {
+    this.lastChunkWritten = true;
+    TransformStream.prototype.end.call(this, chunk, encoding, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SAXParser.prototype.stop" id="apidoc.element.parse5.SAXParser.prototype.stop">
+        function <span class="apidocSignatureSpan">parse5.SAXParser.prototype.</span>stop
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stop = function () {
+    this.stopped = true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.parse5.SerializerStream" id="apidoc.module.parse5.SerializerStream">module parse5.SerializerStream</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SerializerStream.SerializerStream" id="apidoc.element.parse5.SerializerStream.SerializerStream">
+        function <span class="apidocSignatureSpan">parse5.</span>SerializerStream
+        <span class="apidocSignatureSpan">(node, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SerializerStream = function (node, options) {
+    ReadableStream.call(this);
+
+    this.serializer = new Serializer(node, options);
+
+    Object.defineProperty(this.serializer, &#x27;html&#x27;, {
+        //NOTE: To make `+=` concat operator work properly we define
+        //getter which always returns empty string
+        get: function () {
+            return &#x27;&#x27;;
+        },
+        set: this.push.bind(this)
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SerializerStream.super_" id="apidoc.element.parse5.SerializerStream.super_">
+        function <span class="apidocSignatureSpan">parse5.SerializerStream.</span>super_
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Readable(options) {
+  if (!(this instanceof Readable))
+    return new Readable(options);
+
+  this._readableState = new ReadableState(options, this);
+
+  // legacy
+  this.readable = true;
+
+  if (options &#x26;&#x26; typeof options.read === &#x27;function&#x27;)
+    this._read = options.read;
+
+  Stream.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.parse5.SerializerStream.prototype" id="apidoc.module.parse5.SerializerStream.prototype">module parse5.SerializerStream.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.parse5.SerializerStream.prototype._read" id="apidoc.element.parse5.SerializerStream.prototype._read">
+        function <span class="apidocSignatureSpan">parse5.SerializerStream.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {
+    this.serializer.serialize();
+    this.push(null);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
