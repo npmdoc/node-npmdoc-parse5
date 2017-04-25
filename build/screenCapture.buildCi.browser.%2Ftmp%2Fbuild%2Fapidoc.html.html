@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/inikulin/parse5"
-
-    >parse5 (v3.0.2)</a>
+    <a href="https://github.com/inikulin/parse5">parse5 (v3.0.2)</a>
 </h1>
 <h4>HTML parsing/serialization toolset for Node.js. WHATWG HTML Living Standard (aka HTML5)-compliant.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.parse5">module parse5</a><ol>
 
@@ -2148,15 +2141,15 @@
     <li>example usage<pre class="apidocCodePre">...
 * ```js
 *
-* const parse5 = require(&#x27;parse5&#x27;);
-* const http = require(&#x27;http&#x27;);
+* const parse5 = require('parse5');
+* const http = require('http');
 *
-* // Fetch the page content and obtain it&#x27;s &#x3c;head&#x3e; node
-* http.get(&#x27;http://inikulin.github.io/parse5/&#x27;, res =&#x3e; {
+* // Fetch the page content and obtain it's &lt;head&gt; node
+* http.get('http://inikulin.github.io/parse5/', res =&gt; {
 *    const parser = new parse5.<span class="apidocCodeKeywordSpan">ParserStream</span>();
 *
-*    parser.once(&#x27;finish&#x27;, () =&#x3e; {
-*        console.log(parser.document.childNodes[1].childNodes[0].tagName); //&#x3e; &#x27;head&#x27;
+*    parser.once('finish', () =&gt; {
+*        console.log(parser.document.childNodes[1].childNodes[0].tagName); //&gt; 'head'
 *    });
 *
 *    res.pipe(parser);
@@ -2182,21 +2175,21 @@
     this.parser.openElements.pop();
     this.parser._insertFakeElement($.BODY);
     this.parser._insertFakeElement($.PRE);
-    this.parser.treeAdapter.insertText(this.parser.openElements.current, &#x27;\n&#x27;);
+    this.parser.treeAdapter.insertText(this.parser.openElements.current, '\n');
     this.parser.switchToPlaintextParsing();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 * @example
 * ```js
 *
-* const parse5 = require(&#x27;parse5&#x27;);
-* const fs = require(&#x27;fs&#x27;);
+* const parse5 = require('parse5');
+* const fs = require('fs');
 *
-* const file = fs.createReadStream(&#x27;war_and_peace.txt&#x27;);
+* const file = fs.createReadStream('war_and_peace.txt');
 * const converter = new parse5.<span class="apidocCodeKeywordSpan">PlainTextConversionStream</span>();
 *
-* converter.once(&#x27;finish&#x27;, () =&#x3e; {
-*     console.log(converter.document.childNodes[1].childNodes[0].tagName); //&#x3e; &#x27;head&#x27;
+* converter.once('finish', () =&gt; {
+*     console.log(converter.document.childNodes[1].childNodes[0].tagName); //&gt; 'head'
 * });
 *
 * file.pipe(converter);
@@ -2228,26 +2221,26 @@
     this.stopped = false;
 
     // NOTE: always pipe stream to the /dev/null stream to avoid
-    // `highWaterMark` hit even if we don&#x27;t have consumers.
+    // `highWaterMark` hit even if we don't have consumers.
     // (see: https://github.com/inikulin/parse5/issues/97#issuecomment-171940774)
     this.pipe(new DevNullStream());
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 * ```js
 *
-* const parse5 = require(&#x27;parse5&#x27;);
-* const http = require(&#x27;http&#x27;);
-* const fs = require(&#x27;fs&#x27;);
+* const parse5 = require('parse5');
+* const http = require('http');
+* const fs = require('fs');
 *
-* const file = fs.createWriteStream(&#x27;/home/google.com.html&#x27;);
+* const file = fs.createWriteStream('/home/google.com.html');
 * const parser = new parse5.<span class="apidocCodeKeywordSpan">SAXParser</span>();
 *
-* parser.on(&#x27;text&#x27;, text =&#x3e; {
+* parser.on('text', text =&gt; {
 *    // Handle page text content
 *    ...
 * });
 *
-* http.get(&#x27;http://google.com&#x27;, res =&#x3e; {
+* http.get('http://google.com', res =&gt; {
 ...</pre></li>
     </ul>
 
@@ -2265,11 +2258,11 @@
 
     this.serializer = new Serializer(node, options);
 
-    Object.defineProperty(this.serializer, &#x27;html&#x27;, {
+    Object.defineProperty(this.serializer, 'html', {
         //NOTE: To make `+=` concat operator work properly we define
         //getter which always returns empty string
         get: function () {
-            return &#x27;&#x27;;
+            return '';
         },
         set: this.push.bind(this)
     });
@@ -2277,7 +2270,7 @@
     <li>example usage<pre class="apidocCodePre">...
  *
  * // Uses the default tree adapter for parsing.
- * const document = parse5.parse(&#x27;&#x3c;div&#x3e;&#x3c;/div&#x3e;&#x27;, {
+ * const document = parse5.parse('&lt;div&gt;&lt;/div&gt;', {
  *     treeAdapter: parse5.treeAdapters.default
  * });
  *
@@ -2387,10 +2380,10 @@ export var treeAdapters: {
 * @example
 *```js
 *
-* const parse5 = require(&#x27;parse5&#x27;);
+* const parse5 = require('parse5');
 *
 * // Uses the default tree adapter for parsing.
-* const document = parse5.<span class="apidocCodeKeywordSpan">parse</span>(&#x27;&#x3c;div&#x3e;&#x3c;/div&#x3e;&#x27;, {
+* const document = parse5.<span class="apidocCodeKeywordSpan">parse</span>('&lt;div&gt;&lt;/div&gt;', {
 *     treeAdapter: parse5.treeAdapters.default
 * });
 *
@@ -2411,7 +2404,7 @@ export var treeAdapters: {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function parseFragment(fragmentContext, html, options) {
-    if (typeof fragmentContext === &#x27;string&#x27;) {
+    if (typeof fragmentContext === 'string') {
         options = html;
         html = fragmentContext;
         fragmentContext = null;
@@ -2427,18 +2420,18 @@ export var treeAdapters: {
 * @example
 * ```js
 *
-* const parse5 = require(&#x27;parse5&#x27;);
+* const parse5 = require('parse5');
 *
-* const documentFragment = parse5.<span class="apidocCodeKeywordSpan">parseFragment</span>(&#x27;&#x3c;table&#x3e;&#x3c;/table&#
-x3e;&#x27;);
+* const documentFragment = parse5.<span class="apidocCodeKeywordSpan">parseFragment</span>('&lt;table&gt;&lt;/table&amp;#
+x3e;');
 *
-* console.log(documentFragment.childNodes[0].tagName); //&#x3e; &#x27;table&#x27;
+* console.log(documentFragment.childNodes[0].tagName); //&gt; 'table'
 *
-* // Parses the html fragment in the context of the parsed &#x3c;table&#x3e; element.
-* const trFragment = parser.parseFragment(documentFragment.childNodes[0], &#x27;&#x3c;tr&#x3e;&#x3c;td&#x3e;Shake it, baby&#x3c;/
-td&#x3e;&#x3c;/tr&#x3e;&#x27;);
+* // Parses the html fragment in the context of the parsed &lt;table&gt; element.
+* const trFragment = parser.parseFragment(documentFragment.childNodes[0], '&lt;tr&gt;&lt;td&gt;Shake it, baby&lt;/
+td&gt;&lt;/tr&gt;');
 *
-* console.log(trFragment.childNodes[0].childNodes[0].tagName); //&#x3e; &#x27;td&#x27;
+* console.log(trFragment.childNodes[0].childNodes[0].tagName); //&gt; 'td'
 ...</pre></li>
     </ul>
 
@@ -2506,18 +2499,18 @@ td&#x3e;&#x3c;/tr&#x3e;&#x27;);
     <li>example usage<pre class="apidocCodePre">...
 * ```js
 *
-* const parse5 = require(&#x27;parse5&#x27;);
+* const parse5 = require('parse5');
 *
-* const document = parse5.parse(&#x27;&#x3c;!DOCTYPE html&#x3e;&#x3c;html&#x3e;&#x3c;head&#x3e;&#x3c;/head&#x3e;&#x3c;body&#x3e;
-Hi there!&#x3c;/body&#x3e;&#x3c;/html&#x3e;&#x27;);
+* const document = parse5.parse('&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;
+Hi there!&lt;/body&gt;&lt;/html&gt;');
 *
 * // Serializes a document.
 * const html = parse5.<span class="apidocCodeKeywordSpan">serialize</span>(document);
 *
-* // Serializes the &#x3c;html&#x3e; element content.
+* // Serializes the &lt;html&gt; element content.
 * const str = parse5.serialize(document.childNodes[1]);
 *
-* console.log(str); //&#x3e; &#x27;&#x3c;head&#x3e;&#x3c;/head&#x3e;&#x3c;body&#x3e;Hi there!&#x3c;/body&#x3e;&#x27;
+* console.log(str); //&gt; '&lt;head&gt;&lt;/head&gt;&lt;body&gt;Hi there!&lt;/body&gt;'
 * ```
 */
 ...</pre></li>
@@ -2591,15 +2584,15 @@ Hi there!&#x3c;/body&#x3e;&#x3c;/html&#x3e;&#x27;);
     <li>example usage<pre class="apidocCodePre">...
 * ```js
 *
-* const parse5 = require(&#x27;parse5&#x27;);
-* const http = require(&#x27;http&#x27;);
+* const parse5 = require('parse5');
+* const http = require('http');
 *
-* // Fetch the page content and obtain it&#x27;s &#x3c;head&#x3e; node
-* http.get(&#x27;http://inikulin.github.io/parse5/&#x27;, res =&#x3e; {
+* // Fetch the page content and obtain it's &lt;head&gt; node
+* http.get('http://inikulin.github.io/parse5/', res =&gt; {
 *    const parser = new parse5.<span class="apidocCodeKeywordSpan">ParserStream</span>();
 *
-*    parser.once(&#x27;finish&#x27;, () =&#x3e; {
-*        console.log(parser.document.childNodes[1].childNodes[0].tagName); //&#x3e; &#x27;head&#x27;
+*    parser.once('finish', () =&gt; {
+*        console.log(parser.document.childNodes[1].childNodes[0].tagName); //&gt; 'head'
 *    });
 *
 *    res.pipe(parser);
@@ -2624,7 +2617,7 @@ Hi there!&#x3c;/body&#x3e;&#x3c;/html&#x3e;&#x27;);
   // Trying to use the custom `instanceof` for Writable here will also break the
   // Node.js LazyTransform implementation, which has a non-trivial getter for
   // `_writableState` that would lead to infinite recursion.
-  if (!(realHasInstance.call(Writable, this)) &#x26;&#x26;
+  if (!(realHasInstance.call(Writable, this)) &amp;&amp;
       !(this instanceof Stream.Duplex)) {
     return new Writable(options);
   }
@@ -2635,10 +2628,10 @@ Hi there!&#x3c;/body&#x3e;&#x3c;/html&#x3e;&#x27;);
   this.writable = true;
 
   if (options) {
-    if (typeof options.write === &#x27;function&#x27;)
+    if (typeof options.write === 'function')
       this._write = options.write;
 
-    if (typeof options.writev === &#x27;function&#x27;)
+    if (typeof options.writev === 'function')
       this._writev = options.writev;
   }
 
@@ -2679,7 +2672,7 @@ Hi there!&#x3c;/body&#x3e;&#x3c;/html&#x3e;&#x27;);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_resume = function () {
     if (!this.pausedByScript)
-        throw new Error(&#x27;Parser was already resumed&#x27;);
+        throw new Error('Parser was already resumed');
 
     while (this.pendingHtmlInsertions.length) {
         var html = this.pendingHtmlInsertions.pop();
@@ -2689,7 +2682,7 @@ Hi there!&#x3c;/body&#x3e;&#x3c;/html&#x3e;&#x27;);
 
     this.pausedByScript = false;
 
-    //NOTE: keep parsing if we don&#x27;t wait for the next input chunk
+    //NOTE: keep parsing if we don't wait for the next input chunk
     if (this.parser.tokenizer.active)
         this._runParsingLoop();
 }</pre></li>
@@ -2722,8 +2715,8 @@ return document;
 };
 
 Parser.prototype.parseFragment = function (html, fragmentContext) {
-//NOTE: use &#x3c;template&#x3e; element as a fragment context if context element was not provided,
-//so we will parse in &#x22;forgiving&#x22; manner
+//NOTE: use &lt;template&gt; element as a fragment context if context element was not provided,
+//so we will parse in "forgiving" manner
 ...</pre></li>
     </ul>
 
@@ -2737,9 +2730,9 @@ Parser.prototype.parseFragment = function (html, fragmentContext) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_scriptHandler = function (scriptElement) {
-    if (this.listeners(&#x27;script&#x27;).length) {
+    if (this.listeners('script').length) {
         this.pausedByScript = true;
-        this.emit(&#x27;script&#x27;, scriptElement, this._documentWrite, this._resume);
+        this.emit('script', scriptElement, this._documentWrite, this._resume);
     }
     else
         this._runParsingLoop();
@@ -2758,7 +2751,7 @@ Parser.prototype.parseFragment = function (html, fragmentContext) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_write = function (chunk, encoding, callback) {
     this.writeCallback = callback;
-    this.parser.tokenizer.write(chunk.toString(&#x27;utf8&#x27;), this.lastChunkWritten);
+    this.parser.tokenizer.write(chunk.toString('utf8'), this.lastChunkWritten);
     this._runParsingLoop();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2785,12 +2778,12 @@ Parser.prototype.parseFragment = function (html, fragmentContext) {
  *     });
  * });
  *
- * parser.<span class="apidocCodeKeywordSpan">end</span>(&#x27;&#x3c;script src=&#x22;example.com/script.js&#x22;&#x3e;&#x3c;/script
-&#x3e;&#x27;);
+ * parser.<span class="apidocCodeKeywordSpan">end</span>('&lt;script src="example.com/script.js"&gt;&lt;/script
+&gt;');
  * ```
  */
-on(event: &#x27;script&#x27;, listener: (scriptElement: AST.Element, documentWrite: (html: string) =&#x3e; void, resume: () =&#x3e
-; void) =&#x3e; void): this;
+on(event: 'script', listener: (scriptElement: AST.Element, documentWrite: (html: string) =&gt; void, resume: () =&gt;
+; void) =&gt; void): this;
 /**
  * WritableStream events
  */
@@ -2821,21 +2814,21 @@ on(event: string, listener: Function): this;
     this.parser.openElements.pop();
     this.parser._insertFakeElement($.BODY);
     this.parser._insertFakeElement($.PRE);
-    this.parser.treeAdapter.insertText(this.parser.openElements.current, &#x27;\n&#x27;);
+    this.parser.treeAdapter.insertText(this.parser.openElements.current, '\n');
     this.parser.switchToPlaintextParsing();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 * @example
 * ```js
 *
-* const parse5 = require(&#x27;parse5&#x27;);
-* const fs = require(&#x27;fs&#x27;);
+* const parse5 = require('parse5');
+* const fs = require('fs');
 *
-* const file = fs.createReadStream(&#x27;war_and_peace.txt&#x27;);
+* const file = fs.createReadStream('war_and_peace.txt');
 * const converter = new parse5.<span class="apidocCodeKeywordSpan">PlainTextConversionStream</span>();
 *
-* converter.once(&#x27;finish&#x27;, () =&#x3e; {
-*     console.log(converter.document.childNodes[1].childNodes[0].tagName); //&#x3e; &#x27;head&#x27;
+* converter.once('finish', () =&gt; {
+*     console.log(converter.document.childNodes[1].childNodes[0].tagName); //&gt; 'head'
 * });
 *
 * file.pipe(converter);
@@ -2903,26 +2896,26 @@ on(event: string, listener: Function): this;
     this.stopped = false;
 
     // NOTE: always pipe stream to the /dev/null stream to avoid
-    // `highWaterMark` hit even if we don&#x27;t have consumers.
+    // `highWaterMark` hit even if we don't have consumers.
     // (see: https://github.com/inikulin/parse5/issues/97#issuecomment-171940774)
     this.pipe(new DevNullStream());
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 * ```js
 *
-* const parse5 = require(&#x27;parse5&#x27;);
-* const http = require(&#x27;http&#x27;);
-* const fs = require(&#x27;fs&#x27;);
+* const parse5 = require('parse5');
+* const http = require('http');
+* const fs = require('fs');
 *
-* const file = fs.createWriteStream(&#x27;/home/google.com.html&#x27;);
+* const file = fs.createWriteStream('/home/google.com.html');
 * const parser = new parse5.<span class="apidocCodeKeywordSpan">SAXParser</span>();
 *
-* parser.on(&#x27;text&#x27;, text =&#x3e; {
+* parser.on('text', text =&gt; {
 *    // Handle page text content
 *    ...
 * });
 *
-* http.get(&#x27;http://google.com&#x27;, res =&#x3e; {
+* http.get('http://google.com', res =&gt; {
 ...</pre></li>
     </ul>
 
@@ -2954,16 +2947,16 @@ on(event: string, listener: Function): this;
   this._readableState.sync = false;
 
   if (options) {
-    if (typeof options.transform === &#x27;function&#x27;)
+    if (typeof options.transform === 'function')
       this._transform = options.transform;
 
-    if (typeof options.flush === &#x27;function&#x27;)
+    if (typeof options.flush === 'function')
       this._flush = options.flush;
   }
 
   // When the writable side finishes, then flush out anything remaining.
-  this.once(&#x27;prefinish&#x27;, function() {
-    if (typeof this._flush === &#x27;function&#x27;)
+  this.once('prefinish', function() {
+    if (typeof this._flush === 'function')
       this._flush(function(er) {
         done(stream, er);
       });
@@ -2990,7 +2983,7 @@ on(event: string, listener: Function): this;
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_emitPendingText = function () {
     if (this.pendingText !== null) {
-        this.emit(&#x27;text&#x27;, this.pendingText, this.currentTokenLocation);
+        this.emit('text', this.pendingText, this.currentTokenLocation);
         this.pendingText = null;
     }
 }</pre></li>
@@ -2998,14 +2991,14 @@ on(event: string, listener: Function): this;
                 this.currentTokenLocation.endOffset = token.location.endOffset;
         }
 
-        this.pendingText = (this.pendingText || &#x27;&#x27;) + token.chars;
+        this.pendingText = (this.pendingText || '') + token.chars;
     }
 
     else {
         this.<span class="apidocCodeKeywordSpan">_emitPendingText</span>();
         this._handleToken(token);
     }
-} while (!this.stopped &#x26;&#x26; token.type !== Tokenizer.EOF_TOKEN);
+} while (!this.stopped &amp;&amp; token.type !== Tokenizer.EOF_TOKEN);
 };
 
 SAXParser.prototype._handleToken = function (token) {
@@ -3042,28 +3035,28 @@ if (this.options.locationInfo)
         this.currentTokenLocation = token.location;
 
     if (token.type === Tokenizer.START_TAG_TOKEN)
-        this.emit(&#x27;startTag&#x27;, token.tagName, token.attrs, token.selfClosing, this.currentTokenLocation);
+        this.emit('startTag', token.tagName, token.attrs, token.selfClosing, this.currentTokenLocation);
 
     else if (token.type === Tokenizer.END_TAG_TOKEN)
-        this.emit(&#x27;endTag&#x27;, token.tagName, this.currentTokenLocation);
+        this.emit('endTag', token.tagName, this.currentTokenLocation);
 
     else if (token.type === Tokenizer.COMMENT_TOKEN)
-        this.emit(&#x27;comment&#x27;, token.data, this.currentTokenLocation);
+        this.emit('comment', token.data, this.currentTokenLocation);
 
     else if (token.type === Tokenizer.DOCTYPE_TOKEN)
-        this.emit(&#x27;doctype&#x27;, token.name, token.publicId, token.systemId, this.currentTokenLocation);
+        this.emit('doctype', token.name, token.publicId, token.systemId, this.currentTokenLocation);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
         }
 
-        this.pendingText = (this.pendingText || &#x27;&#x27;) + token.chars;
+        this.pendingText = (this.pendingText || '') + token.chars;
     }
 
     else {
         this._emitPendingText();
         this.<span class="apidocCodeKeywordSpan">_handleToken</span>(token);
     }
-} while (!this.stopped &#x26;&#x26; token.type !== Tokenizer.EOF_TOKEN);
+} while (!this.stopped &amp;&amp; token.type !== Tokenizer.EOF_TOKEN);
 };
 
 SAXParser.prototype._handleToken = function (token) {
@@ -3100,14 +3093,14 @@ if (this.options.locationInfo)
                     this.currentTokenLocation.endOffset = token.location.endOffset;
             }
 
-            this.pendingText = (this.pendingText || &#x27;&#x27;) + token.chars;
+            this.pendingText = (this.pendingText || '') + token.chars;
         }
 
         else {
             this._emitPendingText();
             this._handleToken(token);
         }
-    } while (!this.stopped &#x26;&#x26; token.type !== Tokenizer.EOF_TOKEN);
+    } while (!this.stopped &amp;&amp; token.type !== Tokenizer.EOF_TOKEN);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
@@ -3123,8 +3116,8 @@ return document;
 };
 
 Parser.prototype.parseFragment = function (html, fragmentContext) {
-//NOTE: use &#x3c;template&#x3e; element as a fragment context if context element was not provided,
-//so we will parse in &#x22;forgiving&#x22; manner
+//NOTE: use &lt;template&gt; element as a fragment context if context element was not provided,
+//so we will parse in "forgiving" manner
 ...</pre></li>
     </ul>
 
@@ -3139,7 +3132,7 @@ Parser.prototype.parseFragment = function (html, fragmentContext) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_transform = function (chunk, encoding, callback) {
     if (!this.stopped) {
-        this.tokenizer.write(chunk.toString(&#x27;utf8&#x27;), this.lastChunkWritten);
+        this.tokenizer.write(chunk.toString('utf8'), this.lastChunkWritten);
         this._runParsingLoop();
     }
 
@@ -3171,12 +3164,12 @@ Parser.prototype.parseFragment = function (html, fragmentContext) {
  *     });
  * });
  *
- * parser.<span class="apidocCodeKeywordSpan">end</span>(&#x27;&#x3c;script src=&#x22;example.com/script.js&#x22;&#x3e;&#x3c;/script
-&#x3e;&#x27;);
+ * parser.<span class="apidocCodeKeywordSpan">end</span>('&lt;script src="example.com/script.js"&gt;&lt;/script
+&gt;');
  * ```
  */
-on(event: &#x27;script&#x27;, listener: (scriptElement: AST.Element, documentWrite: (html: string) =&#x3e; void, resume: () =&#x3e
-; void) =&#x3e; void): this;
+on(event: 'script', listener: (scriptElement: AST.Element, documentWrite: (html: string) =&gt; void, resume: () =&gt;
+; void) =&gt; void): this;
 /**
  * WritableStream events
  */
@@ -3198,16 +3191,16 @@ on(event: string, listener: Function): this;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 *
-* const file = fs.createWriteStream(&#x27;google.com.html&#x27;);
+* const file = fs.createWriteStream('google.com.html');
 * const parser = new parse5.SAXParser();
 *
-* parser.on(&#x27;doctype&#x27;, (name, publicId, systemId) =&#x3e; {
+* parser.on('doctype', (name, publicId, systemId) =&gt; {
 *    // Process doctype info ans stop parsing
 *    ...
 *    parser.<span class="apidocCodeKeywordSpan">stop</span>();
 * });
 *
-* http.get(&#x27;http://google.com&#x27;, res =&#x3e; {
+* http.get('http://google.com', res =&gt; {
 *    // Despite the fact that parser.stop() was called whole
 *    // content of the page will be written to the file
 *    res.pipe(parser).pipe(file);
@@ -3234,11 +3227,11 @@ on(event: string, listener: Function): this;
 
     this.serializer = new Serializer(node, options);
 
-    Object.defineProperty(this.serializer, &#x27;html&#x27;, {
+    Object.defineProperty(this.serializer, 'html', {
         //NOTE: To make `+=` concat operator work properly we define
         //getter which always returns empty string
         get: function () {
-            return &#x27;&#x27;;
+            return '';
         },
         set: this.push.bind(this)
     });
@@ -3246,7 +3239,7 @@ on(event: string, listener: Function): this;
     <li>example usage<pre class="apidocCodePre">...
  *
  * // Uses the default tree adapter for parsing.
- * const document = parse5.parse(&#x27;&#x3c;div&#x3e;&#x3c;/div&#x3e;&#x27;, {
+ * const document = parse5.parse('&lt;div&gt;&lt;/div&gt;', {
  *     treeAdapter: parse5.treeAdapters.default
  * });
  *
@@ -3280,7 +3273,7 @@ export var treeAdapters: {
   // legacy
   this.readable = true;
 
-  if (options &#x26;&#x26; typeof options.read === &#x27;function&#x27;)
+  if (options &amp;&amp; typeof options.read === 'function')
     this._read = options.read;
 
   Stream.call(this);
@@ -3326,10 +3319,10 @@ export var treeAdapters: {
     <li>description and source-code<pre class="apidocCodePre">adoptAttributes = function (recipient, attrs) {
     var recipientAttrsMap = [];
 
-    for (var i = 0; i &#x3c; recipient.attrs.length; i++)
+    for (var i = 0; i &lt; recipient.attrs.length; i++)
         recipientAttrsMap.push(recipient.attrs[i].name);
 
-    for (var j = 0; j &#x3c; attrs.length; j++) {
+    for (var j = 0; j &lt; attrs.length; j++) {
         if (recipientAttrsMap.indexOf(attrs[j].name) === -1)
             recipient.attrs.push(attrs[j]);
     }
@@ -3348,7 +3341,7 @@ if (p.openElements.tmplCount === 0)
 function bodyStartTagInBody(p, token) {
 var bodyElement = p.openElements.tryPeekProperlyNestedBodyElement();
 
-if (bodyElement &#x26;&#x26; p.openElements.tmplCount === 0) {
+if (bodyElement &amp;&amp; p.openElements.tmplCount === 0) {
     p.framesetOk = false;
 ...</pre></li>
     </ul>
@@ -3396,7 +3389,7 @@ this._attachElementToTree(element);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">createCommentNode = function (data) {
     return {
-        nodeName: &#x27;#comment&#x27;,
+        nodeName: '#comment',
         data: data,
         parentNode: null
     };
@@ -3431,7 +3424,7 @@ if (this._shouldFosterParentOnInsertion())
     <ul>
     <li>description and source-code<pre class="apidocCodePre">createDocument = function () {
     return {
-        nodeName: &#x27;#document&#x27;,
+        nodeName: '#document',
         mode: DOCUMENT_MODE.NO_QUIRKS,
         childNodes: []
     };
@@ -3466,7 +3459,7 @@ Parser.prototype.parse = function (html) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">createDocumentFragment = function () {
     return {
-        nodeName: &#x27;#document-fragment&#x27;,
+        nodeName: '#document-fragment',
         childNodes: []
     };
 }</pre></li>
@@ -3513,15 +3506,15 @@ return document;
 };
 
 Parser.prototype.parseFragment = function (html, fragmentContext) {
-//NOTE: use &#x3c;template&#x3e; element as a fragment context if context element was not provided,
-//so we will parse in &#x22;forgiving&#x22; manner
+//NOTE: use &lt;template&gt; element as a fragment context if context element was not provided,
+//so we will parse in "forgiving" manner
 if (!fragmentContext)
     fragmentContext = this.treeAdapter.<span class="apidocCodeKeywordSpan">createElement</span>($.TEMPLATE, NS.HTML, []);
 
-//NOTE: create fake element which will be used as &#x27;document&#x27; for fragment parsing.
-//This is important for jsdom there &#x27;document&#x27; can&#x27;t be recreated, therefore
+//NOTE: create fake element which will be used as 'document' for fragment parsing.
+//This is important for jsdom there 'document' can't be recreated, therefore
 //fragment parsing causes messing of the main `document`.
-var documentMock = this.treeAdapter.createElement(&#x27;documentmock&#x27;, NS.HTML, []);
+var documentMock = this.treeAdapter.createElement('documentmock', NS.HTML, []);
 
 this._bootstrap(documentMock, fragmentContext);
 ...</pre></li>
@@ -3577,15 +3570,15 @@ var current = this._getAdjustedCurrentElement();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 *
-* const parse = require(&#x27;parse5&#x27;);
-* const http = require(&#x27;http&#x27;);
+* const parse = require('parse5');
+* const http = require('http');
 *
 * const parser = new parse5.ParserStream();
 *
-* parser.on(&#x27;script&#x27;, (scriptElement, documentWrite, resume) =&#x3e; {
+* parser.on('script', (scriptElement, documentWrite, resume) =&gt; {
 *     const src = parse5.treeAdapters.default.<span class="apidocCodeKeywordSpan">getAttrList</span>(scriptElement)[0].value;
 *
-*     http.get(src, res =&#x3e; {
+*     http.get(src, res =&gt; {
 *        // Fetch the script content, execute it with DOM built around `parser.document` and
 *        // `document.write` implemented using `documentWrite`.
 *        ...
@@ -3617,7 +3610,7 @@ var current = this._getAdjustedCurrentElement();
         var documentChildren = this.treeAdapter.<span class="apidocCodeKeywordSpan">getChildNodes</span>(this.document),
 cnLength = documentChildren.length;
 
-        for (var i = 0; i &#x3c; cnLength; i++) {
+        for (var i = 0; i &lt; cnLength; i++) {
 var node = documentChildren[i];
 
 if (this.treeAdapter.isDocumentTypeNode(node)) {
@@ -3645,14 +3638,14 @@ if (this.treeAdapter.isDocumentTypeNode(node)) {
 };
 
 Serializer.prototype._serializeCommentNode = function (node) {
-    this.html += &#x27;&#x3c;!--&#x27; + this.treeAdapter.<span class="apidocCodeKeywordSpan">getCommentNodeContent</span>(node) + &#
-x27;--&#x3e;&#x27;;
+    this.html += '&lt;!--' + this.treeAdapter.<span class="apidocCodeKeywordSpan">getCommentNodeContent</span>(node) + &amp;#
+x27;--&gt;';
 };
 
 Serializer.prototype._serializeDocumentTypeNode = function (node) {
     var name = this.treeAdapter.getDocumentTypeNodeName(node);
 
-    this.html += &#x27;&#x3c;&#x27; + doctype.serializeContent(name, null, null) + &#x27;&#x3e;&#x27;;
+    this.html += '&lt;' + doctype.serializeContent(name, null, null) + '&gt;';
 };
 ...</pre></li>
     </ul>
@@ -3670,7 +3663,7 @@ Serializer.prototype._serializeDocumentTypeNode = function (node) {
     return document.mode;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-//12.2.5.4.1 The &#x22;initial&#x22; insertion mode
+//12.2.5.4.1 The "initial" insertion mode
 //------------------------------------------------------------------
 function doctypeInInitialMode(p, token) {
     p._setDocumentType(token);
@@ -3704,13 +3697,13 @@ function tokenInInitialMode(p, token) {
 };
 
 Serializer.prototype._serializeCommentNode = function (node) {
-    this.html += &#x27;&#x3c;!--&#x27; + this.treeAdapter.getCommentNodeContent(node) + &#x27;--&#x3e;&#x27;;
+    this.html += '&lt;!--' + this.treeAdapter.getCommentNodeContent(node) + '--&gt;';
 };
 
 Serializer.prototype._serializeDocumentTypeNode = function (node) {
     var name = this.treeAdapter.<span class="apidocCodeKeywordSpan">getDocumentTypeNodeName</span>(node);
 
-    this.html += &#x27;&#x3c;&#x27; + doctype.serializeContent(name, null, null) + &#x27;&#x3e;&#x27;;
+    this.html += '&lt;' + doctype.serializeContent(name, null, null) + '&gt;';
 };
 ...</pre></li>
     </ul>
@@ -3792,12 +3785,12 @@ Serializer.prototype._serializeDocumentTypeNode = function (node) {
 FormattingElementList.prototype._getNoahArkConditionCandidates = function (newElement) {
     var candidates = [];
 
-    if (this.length &#x3e;= NOAH_ARK_CAPACITY) {
+    if (this.length &gt;= NOAH_ARK_CAPACITY) {
         var neAttrsLength = this.treeAdapter.getAttrList(newElement).length,
 neTagName = this.treeAdapter.getTagName(newElement),
 neNamespaceURI = this.treeAdapter.<span class="apidocCodeKeywordSpan">getNamespaceURI</span>(newElement);
 
-        for (var i = this.length - 1; i &#x3e;= 0; i--) {
+        for (var i = this.length - 1; i &gt;= 0; i--) {
 var entry = this.entries[i];
 
 if (entry.type === FormattingElementList.MARKER_ENTRY)
@@ -3856,9 +3849,9 @@ if (loc.attrs)
         if (closingToken.location) {
 var ctLocation = closingToken.location,
     tn = treeAdapter.<span class="apidocCodeKeywordSpan">getTagName</span>(element),
-// NOTE: For cases like &#x3c;p&#x3e; &#x3c;p&#x3e; &#x3c;/p&#x3e; - First &#x27;p&#x27; closes without a closing tag and
-// for cases like &#x3c;td&#x3e; &#x3c;p&#x3e; &#x3c;/td&#x3e; - &#x27;p&#x27; closes without a closing tag
-    isClosingEndTag = closingToken.type === Tokenizer.END_TAG_TOKEN &#x26;&#x26;
+// NOTE: For cases like &lt;p&gt; &lt;p&gt; &lt;/p&gt; - First 'p' closes without a closing tag and
+// for cases like &lt;td&gt; &lt;p&gt; &lt;/td&gt; - 'p' closes without a closing tag
+    isClosingEndTag = closingToken.type === Tokenizer.END_TAG_TOKEN &amp;&amp;
                       tn === closingToken.tagName;
 
 if (isClosingEndTag) {
@@ -3910,9 +3903,9 @@ parser._insertFakeRootElement = function () {
     return textNode.value;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-        this.html += attr.namespace + &#x27;:&#x27; + attr.name;
+        this.html += attr.namespace + ':' + attr.name;
 
-    this.html += &#x27;=&#x22;&#x27; + value + &#x27;&#x22;&#x27;;
+    this.html += '="' + value + '"';
 }
 };
 
@@ -3921,7 +3914,7 @@ var content = this.treeAdapter.<span class="apidocCodeKeywordSpan">getTextNodeCo
     parent = this.treeAdapter.getParentNode(node),
     parentTn = void 0;
 
-if (parent &#x26;&#x26; this.treeAdapter.isElementNode(parent))
+if (parent &amp;&amp; this.treeAdapter.isElementNode(parent))
     parentTn = this.treeAdapter.getTagName(parent);
 
 if (parentTn === $.STYLE || parentTn === $.SCRIPT || parentTn === $.XMP || parentTn === $.IFRAME ||
@@ -3974,7 +3967,7 @@ var location = this._findFosterParentingLocation();
     if (parentNode.childNodes.length) {
         var prevNode = parentNode.childNodes[parentNode.childNodes.length - 1];
 
-        if (prevNode.nodeName === &#x27;#text&#x27;) {
+        if (prevNode.nodeName === '#text') {
             prevNode.value += text;
             return;
         }
@@ -4012,7 +4005,7 @@ while (true) {
     <li>description and source-code<pre class="apidocCodePre">insertTextBefore = function (parentNode, text, referenceNode) {
     var prevNode = parentNode.childNodes[parentNode.childNodes.indexOf(referenceNode) - 1];
 
-    if (prevNode &#x26;&#x26; prevNode.nodeName === &#x27;#text&#x27;)
+    if (prevNode &amp;&amp; prevNode.nodeName === '#text')
         prevNode.value += text;
     else
         insertBefore(parentNode, createTextNode(text), referenceNode);
@@ -4046,7 +4039,7 @@ var tn = this.treeAdapter.getTagName(element),
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isCommentNode = function (node) {
-    return node.nodeName === &#x27;#comment&#x27;;
+    return node.nodeName === '#comment';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
@@ -4077,14 +4070,14 @@ var tn = this.treeAdapter.getTagName(element),
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isDocumentTypeNode = function (node) {
-    return node.nodeName === &#x27;#documentType&#x27;;
+    return node.nodeName === '#documentType';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
     var documentChildren = this.treeAdapter.getChildNodes(this.document),
         cnLength = documentChildren.length;
 
-    for (var i = 0; i &#x3c; cnLength; i++) {
+    for (var i = 0; i &lt; cnLength; i++) {
         var node = documentChildren[i];
 
         if (this.treeAdapter.<span class="apidocCodeKeywordSpan">isDocumentTypeNode</span>(node)) {
@@ -4113,7 +4106,7 @@ Serializer.prototype._serializeChildNodes = function (parentNode) {
     var childNodes = this.treeAdapter.getChildNodes(parentNode);
 
     if (childNodes) {
-        for (var i = 0, cnLength = childNodes.length; i &#x3c; cnLength; i++) {
+        for (var i = 0, cnLength = childNodes.length; i &lt; cnLength; i++) {
 var currentNode = childNodes[i];
 
 if (this.treeAdapter.<span class="apidocCodeKeywordSpan">isElementNode</span>(currentNode))
@@ -4137,11 +4130,11 @@ else if (this.treeAdapter.isCommentNode(currentNode))
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isTextNode = function (node) {
-    return node.nodeName === &#x27;#text&#x27;;
+    return node.nodeName === '#text';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     if (childNodes) {
-        for (var i = 0, cnLength = childNodes.length; i &#x3c; cnLength; i++) {
+        for (var i = 0, cnLength = childNodes.length; i &lt; cnLength; i++) {
 var currentNode = childNodes[i];
 
 if (this.treeAdapter.isElementNode(currentNode))
@@ -4201,8 +4194,8 @@ p.insertionMode = BEFORE_HTML_MODE;
     <li>description and source-code<pre class="apidocCodePre">setDocumentType = function (document, name, publicId, systemId) {
     var doctypeNode = null;
 
-    for (var i = 0; i &#x3c; document.childNodes.length; i++) {
-        if (document.childNodes[i].nodeName === &#x27;#documentType&#x27;) {
+    for (var i = 0; i &lt; document.childNodes.length; i++) {
+        if (document.childNodes[i].nodeName === '#documentType') {
             doctypeNode = document.childNodes[i];
             break;
         }
@@ -4216,7 +4209,7 @@ p.insertionMode = BEFORE_HTML_MODE;
 
     else {
         appendChild(document, {
-            nodeName: &#x27;#documentType&#x27;,
+            nodeName: '#documentType',
             name: name,
             publicId: publicId,
             systemId: systemId
@@ -4310,7 +4303,7 @@ var element = this.treeAdapter.createElement($.HTML, NS.HTML, []);
   // Trying to use the custom `instanceof` for Writable here will also break the
   // Node.js LazyTransform implementation, which has a non-trivial getter for
   // `_writableState` that would lead to infinite recursion.
-  if (!(realHasInstance.call(Writable, this)) &#x26;&#x26;
+  if (!(realHasInstance.call(Writable, this)) &amp;&amp;
       !(this instanceof Stream.Duplex)) {
     return new Writable(options);
   }
@@ -4321,10 +4314,10 @@ var element = this.treeAdapter.createElement($.HTML, NS.HTML, []);
   this.writable = true;
 
   if (options) {
-    if (typeof options.write === &#x27;function&#x27;)
+    if (typeof options.write === 'function')
       this._write = options.write;
 
-    if (typeof options.writev === &#x27;function&#x27;)
+    if (typeof options.writev === 'function')
       this._writev = options.writev;
   }
 
@@ -4371,13 +4364,13 @@ var element = this.treeAdapter.createElement($.HTML, NS.HTML, []);
     if (name !== VALID_DOCTYPE_NAME)
         return DOCUMENT_MODE.QUIRKS;
 
-    if (systemId &#x26;&#x26; systemId.toLowerCase() === QUIRKS_MODE_SYSTEM_ID)
+    if (systemId &amp;&amp; systemId.toLowerCase() === QUIRKS_MODE_SYSTEM_ID)
         return DOCUMENT_MODE.QUIRKS;
 
     if (publicId !== null) {
         publicId = publicId.toLowerCase();
 
-        if (QUIRKS_MODE_PUBLIC_IDS.indexOf(publicId) &#x3e; -1)
+        if (QUIRKS_MODE_PUBLIC_IDS.indexOf(publicId) &gt; -1)
             return DOCUMENT_MODE.QUIRKS;
 
         var prefixes = systemId === null ? QUIRKS_MODE_NO_SYSTEM_ID_PUBLIC_ID_PREFIXES : QUIRKS_MODE_PUBLIC_ID_PREFIXES;
@@ -4394,7 +4387,7 @@ var element = this.treeAdapter.createElement($.HTML, NS.HTML, []);
     return DOCUMENT_MODE.NO_QUIRKS;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-//12.2.5.4.1 The &#x22;initial&#x22; insertion mode
+//12.2.5.4.1 The "initial" insertion mode
 //------------------------------------------------------------------
 function doctypeInInitialMode(p, token) {
     p._setDocumentType(token);
@@ -4422,32 +4415,32 @@ function tokenInInitialMode(p, token) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">serializeContent = function (name, publicId, systemId) {
-    var str = &#x27;!DOCTYPE &#x27;;
+    var str = '!DOCTYPE ';
 
     if (name)
         str += name;
 
     if (publicId !== null)
-        str += &#x27; PUBLIC &#x27; + enquoteDoctypeId(publicId);
+        str += ' PUBLIC ' + enquoteDoctypeId(publicId);
 
     else if (systemId !== null)
-        str += &#x27; SYSTEM&#x27;;
+        str += ' SYSTEM';
 
     if (systemId !== null)
-        str += &#x27; &#x27; + enquoteDoctypeId(systemId);
+        str += ' ' + enquoteDoctypeId(systemId);
 
     return str;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 Serializer.prototype._serializeCommentNode = function (node) {
-    this.html += &#x27;&#x3c;!--&#x27; + this.treeAdapter.getCommentNodeContent(node) + &#x27;--&#x3e;&#x27;;
+    this.html += '&lt;!--' + this.treeAdapter.getCommentNodeContent(node) + '--&gt;';
 };
 
 Serializer.prototype._serializeDocumentTypeNode = function (node) {
     var name = this.treeAdapter.getDocumentTypeNodeName(node);
 
-    this.html += &#x27;&#x3c;&#x27; + doctype.<span class="apidocCodeKeywordSpan">serializeContent</span>(name, null, null) + &#
-x27;&#x3e;&#x27;;
+    this.html += '&lt;' + doctype.<span class="apidocCodeKeywordSpan">serializeContent</span>(name, null, null) + &amp;#
+x27;&gt;';
 };
 ...</pre></li>
     </ul>
@@ -4467,7 +4460,7 @@ x27;&#x3e;&#x27;;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">adjustTokenMathMLAttrs = function (token) {
-    for (var i = 0; i &#x3c; token.attrs.length; i++) {
+    for (var i = 0; i &lt; token.attrs.length; i++) {
         if (token.attrs[i].name === DEFINITION_URL_ATTR) {
             token.attrs[i].name = ADJUSTED_DEFINITION_URL_ATTR;
             break;
@@ -4503,7 +4496,7 @@ function mathStartTagInBody(p, token) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">adjustTokenSVGAttrs = function (token) {
-    for (var i = 0; i &#x3c; token.attrs.length; i++) {
+    for (var i = 0; i &lt; token.attrs.length; i++) {
         var adjustedAttrName = SVG_ATTRS_ADJUSTMENT_MAP[token.attrs[i].name];
 
         if (adjustedAttrName)
@@ -4573,7 +4566,7 @@ if (token.selfClosing)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">adjustTokenXMLAttrs = function (token) {
-    for (var i = 0; i &#x3c; token.attrs.length; i++) {
+    for (var i = 0; i &lt; token.attrs.length; i++) {
         var adjustedAttrEntry = XML_ATTRS_ADJUSTMENT_MAP[token.attrs[i].name];
 
         if (adjustedAttrEntry) {
@@ -4612,7 +4605,7 @@ function mathStartTagInBody(p, token) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">causesExit = function (startTagToken) {
     var tn = startTagToken.tagName;
-    var isFontWithAttrs = tn === $.FONT &#x26;&#x26; (Tokenizer.getTokenAttr(startTagToken, ATTRS.COLOR) !== null ||
+    var isFontWithAttrs = tn === $.FONT &amp;&amp; (Tokenizer.getTokenAttr(startTagToken, ATTRS.COLOR) !== null ||
                                             Tokenizer.getTokenAttr(startTagToken, ATTRS.SIZE) !== null ||
                                             Tokenizer.getTokenAttr(startTagToken, ATTRS.FACE) !== null);
 
@@ -4626,8 +4619,8 @@ p.framesetOk = false;
 }
 
 function startTagInForeignContent(p, token) {
-if (foreignContent.<span class="apidocCodeKeywordSpan">causesExit</span>(token) &#x26;&#x26; !p.fragmentContext) {
-    while (p.treeAdapter.getNamespaceURI(p.openElements.current) !== NS.HTML &#x26;&#x26; !p._isIntegrationPoint(p.openElements.
+if (foreignContent.<span class="apidocCodeKeywordSpan">causesExit</span>(token) &amp;&amp; !p.fragmentContext) {
+    while (p.treeAdapter.getNamespaceURI(p.openElements.current) !== NS.HTML &amp;&amp; !p._isIntegrationPoint(p.openElements.
 current))
         p.openElements.pop();
 
@@ -4648,10 +4641,10 @@ else {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isIntegrationPoint = function (tn, ns, attrs, foreignNS) {
-    if ((!foreignNS || foreignNS === NS.HTML) &#x26;&#x26; isHtmlIntegrationPoint(tn, ns, attrs))
+    if ((!foreignNS || foreignNS === NS.HTML) &amp;&amp; isHtmlIntegrationPoint(tn, ns, attrs))
         return true;
 
-    if ((!foreignNS || foreignNS === NS.MATHML) &#x26;&#x26; isMathMLTextIntegrationPoint(tn, ns))
+    if ((!foreignNS || foreignNS === NS.MATHML) &amp;&amp; isMathMLTextIntegrationPoint(tn, ns))
         return true;
 
     return false;
@@ -4728,14 +4721,14 @@ if (listLength) {
             neAttrsMap = Object.create(null);
 
         //NOTE: build attrs map for the new element so we can perform fast lookups
-        for (var i = 0; i &#x3c; neAttrsLength; i++) {
+        for (var i = 0; i &lt; neAttrsLength; i++) {
             var neAttr = neAttrs[i];
 
             neAttrsMap[neAttr.name] = neAttr.value;
         }
 
-        for (i = 0; i &#x3c; neAttrsLength; i++) {
-            for (var j = 0; j &#x3c; cLength; j++) {
+        for (i = 0; i &lt; neAttrsLength; i++) {
+            for (var j = 0; j &lt; cLength; j++) {
                 var cAttr = candidates[j].attrs[i];
 
                 if (neAttrsMap[cAttr.name] !== cAttr.value) {
@@ -4743,13 +4736,13 @@ if (listLength) {
                     cLength--;
                 }
 
-                if (candidates.length &#x3c; NOAH_ARK_CAPACITY)
+                if (candidates.length &lt; NOAH_ARK_CAPACITY)
                     return;
             }
         }
 
-        //NOTE: remove bottommost candidates until Noah&#x27;s Ark condition will not be met
-        for (i = cLength - 1; i &#x3e;= NOAH_ARK_CAPACITY - 1; i--) {
+        //NOTE: remove bottommost candidates until Noah's Ark condition will not be met
+        for (i = cLength - 1; i &gt;= NOAH_ARK_CAPACITY - 1; i--) {
             this.entries.splice(candidates[i].idx, 1);
             this.length--;
         }
@@ -4785,12 +4778,12 @@ this.entries.push({
     <li>description and source-code<pre class="apidocCodePre">_getNoahArkConditionCandidates = function (newElement) {
     var candidates = [];
 
-    if (this.length &#x3e;= NOAH_ARK_CAPACITY) {
+    if (this.length &gt;= NOAH_ARK_CAPACITY) {
         var neAttrsLength = this.treeAdapter.getAttrList(newElement).length,
             neTagName = this.treeAdapter.getTagName(newElement),
             neNamespaceURI = this.treeAdapter.getNamespaceURI(newElement);
 
-        for (var i = this.length - 1; i &#x3e;= 0; i--) {
+        for (var i = this.length - 1; i &gt;= 0; i--) {
             var entry = this.entries[i];
 
             if (entry.type === FormattingElementList.MARKER_ENTRY)
@@ -4798,8 +4791,8 @@ this.entries.push({
 
             var element = entry.element,
                 elementAttrs = this.treeAdapter.getAttrList(element),
-                isCandidate = this.treeAdapter.getTagName(element) === neTagName &#x26;&#x26;
-                              this.treeAdapter.getNamespaceURI(element) === neNamespaceURI &#x26;&#x26;
+                isCandidate = this.treeAdapter.getTagName(element) === neTagName &amp;&amp;
+                              this.treeAdapter.getNamespaceURI(element) === neNamespaceURI &amp;&amp;
                               elementAttrs.length === neAttrsLength;
 
             if (isCandidate)
@@ -4807,13 +4800,13 @@ this.entries.push({
         }
     }
 
-    return candidates.length &#x3c; NOAH_ARK_CAPACITY ? [] : candidates;
+    return candidates.length &lt; NOAH_ARK_CAPACITY ? [] : candidates;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     }
 }
 
-return candidates.length &#x3c; NOAH_ARK_CAPACITY ? [] : candidates;
+return candidates.length &lt; NOAH_ARK_CAPACITY ? [] : candidates;
 };
 
 FormattingElementList.prototype._ensureNoahArkCondition = function (newElement) {
@@ -4875,10 +4868,10 @@ Parser.prototype._closePElement = function () {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getElementEntry = function (element) {
-    for (var i = this.length - 1; i &#x3e;= 0; i--) {
+    for (var i = this.length - 1; i &gt;= 0; i--) {
         var entry = this.entries[i];
 
-        if (entry.type === FormattingElementList.ELEMENT_ENTRY &#x26;&#x26; entry.element === element)
+        if (entry.type === FormattingElementList.ELEMENT_ENTRY &amp;&amp; entry.element === element)
             return entry;
     }
 
@@ -4893,7 +4886,7 @@ nextElement = p.openElements.getCommonAncestor(furthestBlock);
 nextElement = p.openElements.getCommonAncestor(element);
 
 var elementEntry = p.activeFormattingElements.<span class="apidocCodeKeywordSpan">getElementEntry</span>(element),
-    counterOverflow = elementEntry &#x26;&#x26; i &#x3e;= AA_INNER_LOOP_ITER,
+    counterOverflow = elementEntry &amp;&amp; i &gt;= AA_INNER_LOOP_ITER,
     shouldRemoveFromOpenElements = !elementEntry || counterOverflow;
 
 if (shouldRemoveFromOpenElements) {
@@ -4912,7 +4905,7 @@ if (shouldRemoveFromOpenElements) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getElementEntryInScopeWithTagName = function (tagName) {
-    for (var i = this.length - 1; i &#x3e;= 0; i--) {
+    for (var i = this.length - 1; i &gt;= 0; i--) {
         var entry = this.entries[i];
 
         if (entry.type === FormattingElementList.MARKER_ENTRY)
@@ -4932,8 +4925,7 @@ if (shouldRemoveFromOpenElements) {
 
 //Steps 5-8 of the algorithm
 function aaObtainFormattingElementEntry(p, token) {
-var formattingElementEntry = p.activeFormattingElements.<span class="apidocCodeKeywordSpan">getElementEntryInScopeWithTagName</span
->(token.tagName);
+var formattingElementEntry = p.activeFormattingElements.<span class="apidocCodeKeywordSpan">getElementEntryInScopeWithTagName</span>(token.tagName);
 
 if (formattingElementEntry) {
     if (!p.openElements.contains(formattingElementEntry.element)) {
@@ -4955,7 +4947,7 @@ if (formattingElementEntry) {
     <li>description and source-code<pre class="apidocCodePre">insertElementAfterBookmark = function (element, token) {
     var bookmarkIdx = this.length - 1;
 
-    for (; bookmarkIdx &#x3e;= 0; bookmarkIdx--) {
+    for (; bookmarkIdx &gt;= 0; bookmarkIdx--) {
         if (this.entries[bookmarkIdx] === this.bookmark)
             break;
     }
@@ -5069,7 +5061,7 @@ function bStartTagInBody(p, token) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">removeEntry = function (entry) {
-    for (var i = this.length - 1; i &#x3e;= 0; i--) {
+    for (var i = this.length - 1; i &gt;= 0; i--) {
         if (this.entries[i] === entry) {
             this.entries.splice(i, 1);
             this.length--;
@@ -5110,13 +5102,13 @@ if (formattingElementEntry) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">adoptAttributes = function (recipient, attrs) {
-    for (var i = 0; i &#x3c; attrs.length; i++) {
+    for (var i = 0; i &lt; attrs.length; i++) {
         var attrName = attrs[i].name;
 
-        if (typeof recipient.attribs[attrName] === &#x27;undefined&#x27;) {
+        if (typeof recipient.attribs[attrName] === 'undefined') {
             recipient.attribs[attrName] = attrs[i].value;
-            recipient[&#x27;x-attribsNamespace&#x27;][attrName] = attrs[i].namespace;
-            recipient[&#x27;x-attribsPrefix&#x27;][attrName] = attrs[i].prefix;
+            recipient['x-attribsNamespace'][attrName] = attrs[i].namespace;
+            recipient['x-attribsPrefix'][attrName] = attrs[i].prefix;
         }
     }
 }</pre></li>
@@ -5134,7 +5126,7 @@ if (p.openElements.tmplCount === 0)
 function bodyStartTagInBody(p, token) {
 var bodyElement = p.openElements.tryPeekProperlyNestedBodyElement();
 
-if (bodyElement &#x26;&#x26; p.openElements.tmplCount === 0) {
+if (bodyElement &amp;&amp; p.openElements.tmplCount === 0) {
     p.framesetOk = false;
 ...</pre></li>
     </ul>
@@ -5189,7 +5181,7 @@ this._attachElementToTree(element);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">createCommentNode = function (data) {
     return new Node({
-        type: &#x27;comment&#x27;,
+        type: 'comment',
         data: data,
         parent: null,
         prev: null,
@@ -5226,13 +5218,13 @@ if (this._shouldFosterParentOnInsertion())
     <ul>
     <li>description and source-code<pre class="apidocCodePre">createDocument = function () {
     return new Node({
-        type: &#x27;root&#x27;,
-        name: &#x27;root&#x27;,
+        type: 'root',
+        name: 'root',
         parent: null,
         prev: null,
         next: null,
         children: [],
-        &#x27;x-mode&#x27;: DOCUMENT_MODE.NO_QUIRKS
+        'x-mode': DOCUMENT_MODE.NO_QUIRKS
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -5265,8 +5257,8 @@ Parser.prototype.parse = function (html) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">createDocumentFragment = function () {
     return new Node({
-        type: &#x27;root&#x27;,
-        name: &#x27;root&#x27;,
+        type: 'root',
+        name: 'root',
         parent: null,
         prev: null,
         next: null,
@@ -5306,7 +5298,7 @@ Parser.prototype.parse = function (html) {
         attribsNamespace = Object.create(null),
         attribsPrefix = Object.create(null);
 
-    for (var i = 0; i &#x3c; attrs.length; i++) {
+    for (var i = 0; i &lt; attrs.length; i++) {
         var attrName = attrs[i].name;
 
         attribs[attrName] = attrs[i].value;
@@ -5315,12 +5307,12 @@ Parser.prototype.parse = function (html) {
     }
 
     return new Node({
-        type: tagName === &#x27;script&#x27; || tagName === &#x27;style&#x27; ? tagName : &#x27;tag&#x27;,
+        type: tagName === 'script' || tagName === 'style' ? tagName : 'tag',
         name: tagName,
         namespace: namespaceURI,
         attribs: attribs,
-        &#x27;x-attribsNamespace&#x27;: attribsNamespace,
-        &#x27;x-attribsPrefix&#x27;: attribsPrefix,
+        'x-attribsNamespace': attribsNamespace,
+        'x-attribsPrefix': attribsPrefix,
         children: [],
         parent: null,
         prev: null,
@@ -5332,15 +5324,15 @@ return document;
 };
 
 Parser.prototype.parseFragment = function (html, fragmentContext) {
-//NOTE: use &#x3c;template&#x3e; element as a fragment context if context element was not provided,
-//so we will parse in &#x22;forgiving&#x22; manner
+//NOTE: use &lt;template&gt; element as a fragment context if context element was not provided,
+//so we will parse in "forgiving" manner
 if (!fragmentContext)
     fragmentContext = this.treeAdapter.<span class="apidocCodeKeywordSpan">createElement</span>($.TEMPLATE, NS.HTML, []);
 
-//NOTE: create fake element which will be used as &#x27;document&#x27; for fragment parsing.
-//This is important for jsdom there &#x27;document&#x27; can&#x27;t be recreated, therefore
+//NOTE: create fake element which will be used as 'document' for fragment parsing.
+//This is important for jsdom there 'document' can't be recreated, therefore
 //fragment parsing causes messing of the main `document`.
-var documentMock = this.treeAdapter.createElement(&#x27;documentmock&#x27;, NS.HTML, []);
+var documentMock = this.treeAdapter.createElement('documentmock', NS.HTML, []);
 
 this._bootstrap(documentMock, fragmentContext);
 ...</pre></li>
@@ -5409,8 +5401,8 @@ var current = this._getAdjustedCurrentElement();
         attrList.push({
             name: name,
             value: element.attribs[name],
-            namespace: element[&#x27;x-attribsNamespace&#x27;][name],
-            prefix: element[&#x27;x-attribsPrefix&#x27;][name]
+            namespace: element['x-attribsNamespace'][name],
+            prefix: element['x-attribsPrefix'][name]
         });
     }
 
@@ -5418,15 +5410,15 @@ var current = this._getAdjustedCurrentElement();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 *
-* const parse = require(&#x27;parse5&#x27;);
-* const http = require(&#x27;http&#x27;);
+* const parse = require('parse5');
+* const http = require('http');
 *
 * const parser = new parse5.ParserStream();
 *
-* parser.on(&#x27;script&#x27;, (scriptElement, documentWrite, resume) =&#x3e; {
+* parser.on('script', (scriptElement, documentWrite, resume) =&gt; {
 *     const src = parse5.treeAdapters.default.<span class="apidocCodeKeywordSpan">getAttrList</span>(scriptElement)[0].value;
 *
-*     http.get(src, res =&#x3e; {
+*     http.get(src, res =&gt; {
 *        // Fetch the script content, execute it with DOM built around `parser.document` and
 *        // `document.write` implemented using `documentWrite`.
 *        ...
@@ -5458,7 +5450,7 @@ var current = this._getAdjustedCurrentElement();
         var documentChildren = this.treeAdapter.<span class="apidocCodeKeywordSpan">getChildNodes</span>(this.document),
 cnLength = documentChildren.length;
 
-        for (var i = 0; i &#x3c; cnLength; i++) {
+        for (var i = 0; i &lt; cnLength; i++) {
 var node = documentChildren[i];
 
 if (this.treeAdapter.isDocumentTypeNode(node)) {
@@ -5486,14 +5478,14 @@ if (this.treeAdapter.isDocumentTypeNode(node)) {
 };
 
 Serializer.prototype._serializeCommentNode = function (node) {
-    this.html += &#x27;&#x3c;!--&#x27; + this.treeAdapter.<span class="apidocCodeKeywordSpan">getCommentNodeContent</span>(node) + &#
-x27;--&#x3e;&#x27;;
+    this.html += '&lt;!--' + this.treeAdapter.<span class="apidocCodeKeywordSpan">getCommentNodeContent</span>(node) + &amp;#
+x27;--&gt;';
 };
 
 Serializer.prototype._serializeDocumentTypeNode = function (node) {
     var name = this.treeAdapter.getDocumentTypeNodeName(node);
 
-    this.html += &#x27;&#x3c;&#x27; + doctype.serializeContent(name, null, null) + &#x27;&#x3e;&#x27;;
+    this.html += '&lt;' + doctype.serializeContent(name, null, null) + '&gt;';
 };
 ...</pre></li>
     </ul>
@@ -5508,10 +5500,10 @@ Serializer.prototype._serializeDocumentTypeNode = function (node) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getDocumentMode = function (document) {
-    return document[&#x27;x-mode&#x27;];
+    return document['x-mode'];
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-//12.2.5.4.1 The &#x22;initial&#x22; insertion mode
+//12.2.5.4.1 The "initial" insertion mode
 //------------------------------------------------------------------
 function doctypeInInitialMode(p, token) {
     p._setDocumentType(token);
@@ -5539,19 +5531,19 @@ function tokenInInitialMode(p, token) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getDocumentTypeNodeName = function (doctypeNode) {
-    return doctypeNode[&#x27;x-name&#x27;];
+    return doctypeNode['x-name'];
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 };
 
 Serializer.prototype._serializeCommentNode = function (node) {
-    this.html += &#x27;&#x3c;!--&#x27; + this.treeAdapter.getCommentNodeContent(node) + &#x27;--&#x3e;&#x27;;
+    this.html += '&lt;!--' + this.treeAdapter.getCommentNodeContent(node) + '--&gt;';
 };
 
 Serializer.prototype._serializeDocumentTypeNode = function (node) {
     var name = this.treeAdapter.<span class="apidocCodeKeywordSpan">getDocumentTypeNodeName</span>(node);
 
-    this.html += &#x27;&#x3c;&#x27; + doctype.serializeContent(name, null, null) + &#x27;&#x3e;&#x27;;
+    this.html += '&lt;' + doctype.serializeContent(name, null, null) + '&gt;';
 };
 ...</pre></li>
     </ul>
@@ -5566,7 +5558,7 @@ Serializer.prototype._serializeDocumentTypeNode = function (node) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getDocumentTypeNodePublicId = function (doctypeNode) {
-    return doctypeNode[&#x27;x-publicId&#x27;];
+    return doctypeNode['x-publicId'];
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -5581,7 +5573,7 @@ Serializer.prototype._serializeDocumentTypeNode = function (node) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getDocumentTypeNodeSystemId = function (doctypeNode) {
-    return doctypeNode[&#x27;x-systemId&#x27;];
+    return doctypeNode['x-systemId'];
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -5633,12 +5625,12 @@ Serializer.prototype._serializeDocumentTypeNode = function (node) {
 FormattingElementList.prototype._getNoahArkConditionCandidates = function (newElement) {
     var candidates = [];
 
-    if (this.length &#x3e;= NOAH_ARK_CAPACITY) {
+    if (this.length &gt;= NOAH_ARK_CAPACITY) {
         var neAttrsLength = this.treeAdapter.getAttrList(newElement).length,
 neTagName = this.treeAdapter.getTagName(newElement),
 neNamespaceURI = this.treeAdapter.<span class="apidocCodeKeywordSpan">getNamespaceURI</span>(newElement);
 
-        for (var i = this.length - 1; i &#x3e;= 0; i--) {
+        for (var i = this.length - 1; i &gt;= 0; i--) {
 var entry = this.entries[i];
 
 if (entry.type === FormattingElementList.MARKER_ENTRY)
@@ -5697,9 +5689,9 @@ if (loc.attrs)
         if (closingToken.location) {
 var ctLocation = closingToken.location,
     tn = treeAdapter.<span class="apidocCodeKeywordSpan">getTagName</span>(element),
-// NOTE: For cases like &#x3c;p&#x3e; &#x3c;p&#x3e; &#x3c;/p&#x3e; - First &#x27;p&#x27; closes without a closing tag and
-// for cases like &#x3c;td&#x3e; &#x3c;p&#x3e; &#x3c;/td&#x3e; - &#x27;p&#x27; closes without a closing tag
-    isClosingEndTag = closingToken.type === Tokenizer.END_TAG_TOKEN &#x26;&#x26;
+// NOTE: For cases like &lt;p&gt; &lt;p&gt; &lt;/p&gt; - First 'p' closes without a closing tag and
+// for cases like &lt;td&gt; &lt;p&gt; &lt;/td&gt; - 'p' closes without a closing tag
+    isClosingEndTag = closingToken.type === Tokenizer.END_TAG_TOKEN &amp;&amp;
                       tn === closingToken.tagName;
 
 if (isClosingEndTag) {
@@ -5751,9 +5743,9 @@ parser._insertFakeRootElement = function () {
     return textNode.data;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-        this.html += attr.namespace + &#x27;:&#x27; + attr.name;
+        this.html += attr.namespace + ':' + attr.name;
 
-    this.html += &#x27;=&#x22;&#x27; + value + &#x27;&#x22;&#x27;;
+    this.html += '="' + value + '"';
 }
 };
 
@@ -5762,7 +5754,7 @@ var content = this.treeAdapter.<span class="apidocCodeKeywordSpan">getTextNodeCo
     parent = this.treeAdapter.getParentNode(node),
     parentTn = void 0;
 
-if (parent &#x26;&#x26; this.treeAdapter.isElementNode(parent))
+if (parent &amp;&amp; this.treeAdapter.isElementNode(parent))
     parentTn = this.treeAdapter.getTagName(parent);
 
 if (parentTn === $.STYLE || parentTn === $.SCRIPT || parentTn === $.XMP || parentTn === $.IFRAME ||
@@ -5823,7 +5815,7 @@ var location = this._findFosterParentingLocation();
     <li>description and source-code<pre class="apidocCodePre">insertText = function (parentNode, text) {
     var lastChild = parentNode.children[parentNode.children.length - 1];
 
-    if (lastChild &#x26;&#x26; lastChild.type === &#x27;text&#x27;)
+    if (lastChild &amp;&amp; lastChild.type === 'text')
         lastChild.data += text;
     else
         appendChild(parentNode, createTextNode(text));
@@ -5858,7 +5850,7 @@ while (true) {
     <li>description and source-code<pre class="apidocCodePre">insertTextBefore = function (parentNode, text, referenceNode) {
     var prevNode = parentNode.children[parentNode.children.indexOf(referenceNode) - 1];
 
-    if (prevNode &#x26;&#x26; prevNode.type === &#x27;text&#x27;)
+    if (prevNode &amp;&amp; prevNode.type === 'text')
         prevNode.data += text;
     else
         insertBefore(parentNode, createTextNode(text), referenceNode);
@@ -5892,7 +5884,7 @@ var tn = this.treeAdapter.getTagName(element),
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isCommentNode = function (node) {
-    return node.type === &#x27;comment&#x27;;
+    return node.type === 'comment';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
@@ -5923,14 +5915,14 @@ var tn = this.treeAdapter.getTagName(element),
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isDocumentTypeNode = function (node) {
-    return node.type === &#x27;directive&#x27; &#x26;&#x26; node.name === &#x27;!doctype&#x27;;
+    return node.type === 'directive' &amp;&amp; node.name === '!doctype';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
     var documentChildren = this.treeAdapter.getChildNodes(this.document),
         cnLength = documentChildren.length;
 
-    for (var i = 0; i &#x3c; cnLength; i++) {
+    for (var i = 0; i &lt; cnLength; i++) {
         var node = documentChildren[i];
 
         if (this.treeAdapter.<span class="apidocCodeKeywordSpan">isDocumentTypeNode</span>(node)) {
@@ -5959,7 +5951,7 @@ Serializer.prototype._serializeChildNodes = function (parentNode) {
     var childNodes = this.treeAdapter.getChildNodes(parentNode);
 
     if (childNodes) {
-        for (var i = 0, cnLength = childNodes.length; i &#x3c; cnLength; i++) {
+        for (var i = 0, cnLength = childNodes.length; i &lt; cnLength; i++) {
 var currentNode = childNodes[i];
 
 if (this.treeAdapter.<span class="apidocCodeKeywordSpan">isElementNode</span>(currentNode))
@@ -5983,11 +5975,11 @@ else if (this.treeAdapter.isCommentNode(currentNode))
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isTextNode = function (node) {
-    return node.type === &#x27;text&#x27;;
+    return node.type === 'text';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     if (childNodes) {
-        for (var i = 0, cnLength = childNodes.length; i &#x3c; cnLength; i++) {
+        for (var i = 0, cnLength = childNodes.length; i &lt; cnLength; i++) {
 var currentNode = childNodes[i];
 
 if (this.treeAdapter.isElementNode(currentNode))
@@ -6014,7 +6006,7 @@ else if (this.treeAdapter.isDocumentTypeNode(currentNode))
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">setDocumentMode = function (document, mode) {
-    document[&#x27;x-mode&#x27;] = mode;
+    document['x-mode'] = mode;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 function doctypeInInitialMode(p, token) {
@@ -6048,8 +6040,8 @@ p.insertionMode = BEFORE_HTML_MODE;
     var data = doctype.serializeContent(name, publicId, systemId),
         doctypeNode = null;
 
-    for (var i = 0; i &#x3c; document.children.length; i++) {
-        if (document.children[i].type === &#x27;directive&#x27; &#x26;&#x26; document.children[i].name === &#x27;!doctype&#x27;) {
+    for (var i = 0; i &lt; document.children.length; i++) {
+        if (document.children[i].type === 'directive' &amp;&amp; document.children[i].name === '!doctype') {
             doctypeNode = document.children[i];
             break;
         }
@@ -6057,19 +6049,19 @@ p.insertionMode = BEFORE_HTML_MODE;
 
     if (doctypeNode) {
         doctypeNode.data = data;
-        doctypeNode[&#x27;x-name&#x27;] = name;
-        doctypeNode[&#x27;x-publicId&#x27;] = publicId;
-        doctypeNode[&#x27;x-systemId&#x27;] = systemId;
+        doctypeNode['x-name'] = name;
+        doctypeNode['x-publicId'] = publicId;
+        doctypeNode['x-systemId'] = systemId;
     }
 
     else {
         appendChild(document, new Node({
-            type: &#x27;directive&#x27;,
-            name: &#x27;!doctype&#x27;,
+            type: 'directive',
+            name: '!doctype',
             data: data,
-            &#x27;x-name&#x27;: name,
-            &#x27;x-publicId&#x27;: publicId,
-            &#x27;x-systemId&#x27;: systemId
+            'x-name': name,
+            'x-publicId': publicId,
+            'x-systemId': systemId
         }));
     }
 
@@ -6256,7 +6248,7 @@ else if (tn === $.TITLE)
     p._switchToTextParsing(token, Tokenizer.MODE.RCDATA);
 
 //NOTE: here we assume that we always act as an interactive user agent with enabled scripting, so we parse
-//&#x3c;noscript&#x3e; as a rawtext.
+//&lt;noscript&gt; as a rawtext.
 else if (tn === $.NOSCRIPT || tn === $.NOFRAMES || tn === $.STYLE)
 ...</pre></li>
     </ul>
@@ -6314,7 +6306,7 @@ this.openElements.push(element);
     this.stopped = false;
 
     this.insertionMode = INITIAL_MODE;
-    this.originalInsertionMode = &#x27;&#x27;;
+    this.originalInsertionMode = '';
 
     this.document = document;
     this.fragmentContext = fragmentContext;
@@ -6476,12 +6468,12 @@ this._adoptNodes(rootElement, fragment);
         beforeElement: null
     };
 
-    for (var i = this.openElements.stackTop; i &#x3e;= 0; i--) {
+    for (var i = this.openElements.stackTop; i &gt;= 0; i--) {
         var openElement = this.openElements.items[i],
             tn = this.treeAdapter.getTagName(openElement),
             ns = this.treeAdapter.getNamespaceURI(openElement);
 
-        if (tn === $.TEMPLATE &#x26;&#x26; ns === NS.HTML) {
+        if (tn === $.TEMPLATE &amp;&amp; ns === NS.HTML) {
             location.parent = this.treeAdapter.getTemplateContent(openElement);
             break;
         }
@@ -6603,7 +6595,7 @@ Parser.prototype._insertCharacters = function (token) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_getAdjustedCurrentElement = function () {
-    return this.openElements.stackTop === 0 &#x26;&#x26; this.fragmentContext ?
+    return this.openElements.stackTop === 0 &amp;&amp; this.fragmentContext ?
         this.fragmentContext :
         this.openElements.current;
 }</pre></li>
@@ -6617,8 +6609,8 @@ if (writeCallback)
 Parser.prototype._setupTokenizerCDATAMode = function () {
 var current = this.<span class="apidocCodeKeywordSpan">_getAdjustedCurrentElement</span>();
 
-this.tokenizer.allowCDATA = current &#x26;&#x26; current !== this.document &#x26;&#x26;
-                            this.treeAdapter.getNamespaceURI(current) !== NS.HTML &#x26;&#x26; !this._isIntegrationPoint(current
+this.tokenizer.allowCDATA = current &amp;&amp; current !== this.document &amp;&amp;
+                            this.treeAdapter.getNamespaceURI(current) !== NS.HTML &amp;&amp; !this._isIntegrationPoint(current
 );
 };
 
@@ -6655,7 +6647,7 @@ this._insertElement(currentToken, NS.HTML);
     }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var documentMock = this.treeAdapter.createElement(&#x27;documentmock&#x27;, NS.HTML, []);
+var documentMock = this.treeAdapter.createElement('documentmock', NS.HTML, []);
 
 this._bootstrap(documentMock, fragmentContext);
 
@@ -6707,7 +6699,7 @@ function stopParsing(p) {
     p.stopped = true;
 }
 
-//12.2.5.4.1 The &#x22;initial&#x22; insertion mode
+//12.2.5.4.1 The "initial" insertion mode
 ...</pre></li>
     </ul>
 
@@ -6729,8 +6721,8 @@ function stopParsing(p) {
     <li>example usage<pre class="apidocCodePre">...
 var current = this._getAdjustedCurrentElement();
 
-this.tokenizer.allowCDATA = current &#x26;&#x26; current !== this.document &#x26;&#x26;
-                            this.treeAdapter.getNamespaceURI(current) !== NS.HTML &#x26;&#x26; !this._isIntegrationPoint(current
+this.tokenizer.allowCDATA = current &amp;&amp; current !== this.document &amp;&amp;
+                            this.treeAdapter.getNamespaceURI(current) !== NS.HTML &amp;&amp; !this._isIntegrationPoint(current
 );
 };
 
@@ -6776,7 +6768,7 @@ function tokenBeforeHead(p, token) {
 }
 
 
-//12.2.5.4.4 The &#x22;in head&#x22; insertion mode
+//12.2.5.4.4 The "in head" insertion mode
 ...</pre></li>
     </ul>
 
@@ -6872,7 +6864,7 @@ return tn === $.TABLE || tn === $.TBODY || tn === $.TFOOT || tn === $.THEAD || t
 };
 
 Parser.prototype._shouldFosterParentOnInsertion = function () {
-return this.fosterParentingEnabled &#x26;&#x26; this.<span class="apidocCodeKeywordSpan">_isElementCausesFosterParenting</span>(
+return this.fosterParentingEnabled &amp;&amp; this.<span class="apidocCodeKeywordSpan">_isElementCausesFosterParenting</span>(
 this.openElements.current);
 };
 
@@ -6907,8 +6899,8 @@ var location = {
 Parser.prototype._setupTokenizerCDATAMode = function () {
 var current = this._getAdjustedCurrentElement();
 
-this.tokenizer.allowCDATA = current &#x26;&#x26; current !== this.document &#x26;&#x26;
-                            this.treeAdapter.getNamespaceURI(current) !== NS.HTML &#x26;&#x26; !this.<span class="apidocCodeKeywordSpan
+this.tokenizer.allowCDATA = current &amp;&amp; current !== this.document &amp;&amp;
+                            this.treeAdapter.getNamespaceURI(current) !== NS.HTML &amp;&amp; !this.<span class="apidocCodeKeywordSpan
 ">_isIntegrationPoint</span>(current);
 };
 
@@ -6937,7 +6929,7 @@ this.insertionMode = TEXT_MODE;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-for (var i = p.openElements.stackTop; i &#x3e;= 0; i--) {
+for (var i = p.openElements.stackTop; i &gt;= 0; i--) {
     var element = p.openElements.items[i];
 
     if (element === formattingElementEntry.element)
@@ -6972,7 +6964,7 @@ if (!furthestBlock) {
 else if (tn === $.BODY || tn === $.BR || tn === $.HTML)
     tokenInHead(p, token);
 
-else if (tn === $.TEMPLATE &#x26;&#x26; p.openElements.tmplCount &#x3e; 0) {
+else if (tn === $.TEMPLATE &amp;&amp; p.openElements.tmplCount &gt; 0) {
     p.openElements.generateImpliedEndTags();
     p.openElements.popUntilTagNamePopped($.TEMPLATE);
     p.activeFormattingElements.clearToLastMarker();
@@ -7013,7 +7005,7 @@ p.insertionMode = AFTER_HEAD_MODE;
 
         this.<span class="apidocCodeKeywordSpan">_processInputToken</span>(token);
 
-        if (scriptHandler &#x26;&#x26; this.pendingScript)
+        if (scriptHandler &amp;&amp; this.pendingScript)
             break;
     }
 };
@@ -7078,7 +7070,7 @@ function tokenInTable(p, token) {
 }
 
 
-//12.2.5.4.10 The &#x22;in table text&#x22; insertion mode
+//12.2.5.4.10 The "in table text" insertion mode
 //------------------------------------------------------------------
 function whitespaceCharacterInTableText(p, token) {
 ...</pre></li>
@@ -7146,9 +7138,9 @@ Parser.prototype._isIntegrationPoint = function (element, foreignNS) {
     this.currentTmplInsertionMode = mode;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-//This is important for jsdom there &#x27;document&#x27; can&#x27;t be recreated, therefore
+//This is important for jsdom there 'document' can't be recreated, therefore
 //fragment parsing causes messing of the main `document`.
-var documentMock = this.treeAdapter.createElement(&#x27;documentmock&#x27;, NS.HTML, []);
+var documentMock = this.treeAdapter.createElement('documentmock', NS.HTML, []);
 
 this._bootstrap(documentMock, fragmentContext);
 
@@ -7188,9 +7180,9 @@ this._runParsingLoop(null);
                 unopenIdx++;
                 break;
             }
-        } while (unopenIdx &#x3e; 0);
+        } while (unopenIdx &gt; 0);
 
-        for (var i = unopenIdx; i &#x3c; listLength; i++) {
+        for (var i = unopenIdx; i &lt; listLength; i++) {
             entry = this.activeFormattingElements.entries[i];
             this._insertElement(entry.token, this.treeAdapter.getNamespaceURI(entry.element));
             entry.element = this.openElements.current;
@@ -7202,7 +7194,7 @@ p._processToken(token);
 }
 
 
-//12.2.5.4.7 The &#x22;in body&#x22; insertion mode
+//12.2.5.4.7 The "in body" insertion mode
 //------------------------------------------------------------------
 function whitespaceCharacterInBody(p, token) {
 p.<span class="apidocCodeKeywordSpan">_reconstructActiveFormattingElements</span>();
@@ -7226,7 +7218,7 @@ p.framesetOk = false;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_resetInsertionMode = function () {
-    for (var i = this.openElements.stackTop, last = false; i &#x3e;= 0; i--) {
+    for (var i = this.openElements.stackTop, last = false; i &gt;= 0; i--) {
         var element = this.openElements.items[i];
 
         if (i === 0) {
@@ -7244,12 +7236,12 @@ p.framesetOk = false;
             break;
         }
 
-        else if (!last &#x26;&#x26; (tn === $.TD || tn === $.TH)) {
+        else if (!last &amp;&amp; (tn === $.TD || tn === $.TH)) {
             this.insertionMode = IN_CELL_MODE;
             break;
         }
 
-        else if (!last &#x26;&#x26; tn === $.HEAD) {
+        else if (!last &amp;&amp; tn === $.HEAD) {
             this.insertionMode = IN_HEAD_MODE;
             break;
         }
@@ -7303,8 +7295,8 @@ var rootElement = this.treeAdapter.getFirstChild(documentMock),
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_resetInsertionModeForSelect = function (selectIdx) {
-    if (selectIdx &#x3e; 0) {
-        for (var i = selectIdx - 1; i &#x3e; 0; i--) {
+    if (selectIdx &gt; 0) {
+        for (var i = selectIdx - 1; i &gt; 0; i--) {
             var ancestor = this.openElements.items[i],
                 tn = this.treeAdapter.getTagName(ancestor);
 
@@ -7322,7 +7314,7 @@ var rootElement = this.treeAdapter.getFirstChild(documentMock),
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-else if (!last &#x26;&#x26; tn === $.HEAD) {
+else if (!last &amp;&amp; tn === $.HEAD) {
     this.insertionMode = IN_HEAD_MODE;
     break;
 }
@@ -7360,7 +7352,7 @@ else if (tn === $.TEMPLATE) {
         if (this.skipNextNewLine) {
             this.skipNextNewLine = false;
 
-            if (token.type === Tokenizer.WHITESPACE_CHARACTER_TOKEN &#x26;&#x26; token.chars[0] === &#x27;\n&#x27;) {
+            if (token.type === Tokenizer.WHITESPACE_CHARACTER_TOKEN &amp;&amp; token.chars[0] === '\n') {
                 if (token.chars.length === 1)
                     continue;
 
@@ -7370,7 +7362,7 @@ else if (tn === $.TEMPLATE) {
 
         this._processInputToken(token);
 
-        if (scriptHandler &#x26;&#x26; this.pendingScript)
+        if (scriptHandler &amp;&amp; this.pendingScript)
             break;
     }
 }</pre></li>
@@ -7388,8 +7380,8 @@ return document;
 };
 
 Parser.prototype.parseFragment = function (html, fragmentContext) {
-//NOTE: use &#x3c;template&#x3e; element as a fragment context if context element was not provided,
-//so we will parse in &#x22;forgiving&#x22; manner
+//NOTE: use &lt;template&gt; element as a fragment context if context element was not provided,
+//so we will parse in "forgiving" manner
 ...</pre></li>
     </ul>
 
@@ -7410,7 +7402,7 @@ function stopParsing(p) {
 p.stopped = true;
 }
 
-//12.2.5.4.1 The &#x22;initial&#x22; insertion mode
+//12.2.5.4.1 The "initial" insertion mode
 //------------------------------------------------------------------
 function doctypeInInitialMode(p, token) {
 p.<span class="apidocCodeKeywordSpan">_setDocumentType</span>(token);
@@ -7435,8 +7427,8 @@ p.treeAdapter.setDocumentMode(p.document, mode);
     <li>description and source-code<pre class="apidocCodePre">_setupTokenizerCDATAMode = function () {
     var current = this._getAdjustedCurrentElement();
 
-    this.tokenizer.allowCDATA = current &#x26;&#x26; current !== this.document &#x26;&#x26;
-                                this.treeAdapter.getNamespaceURI(current) !== NS.HTML &#x26;&#x26; !this._isIntegrationPoint(current);
+    this.tokenizer.allowCDATA = current &amp;&amp; current !== this.document &amp;&amp;
+                                this.treeAdapter.getNamespaceURI(current) !== NS.HTML &amp;&amp; !this._isIntegrationPoint(current);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     this.skipNextNewLine = false;
@@ -7467,7 +7459,7 @@ if (this.skipNextNewLine) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_shouldFosterParentOnInsertion = function () {
-    return this.fosterParentingEnabled &#x26;&#x26; this._isElementCausesFosterParenting(this.openElements.current);
+    return this.fosterParentingEnabled &amp;&amp; this._isElementCausesFosterParenting(this.openElements.current);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 lastFosterParentingLocation = parserProto._findFosterParentingLocation.call(this);
@@ -7478,11 +7470,11 @@ return lastFosterParentingLocation;
 parserProto._insertCharacters.call(this, token);
 
 var hasFosterParent = this.<span class="apidocCodeKeywordSpan">_shouldFosterParentOnInsertion</span>(),
-    parent = hasFosterParent &#x26;&#x26; lastFosterParentingLocation.parent ||
+    parent = hasFosterParent &amp;&amp; lastFosterParentingLocation.parent ||
              this.openElements.currentTmplContent ||
              this.openElements.current,
     siblings = this.treeAdapter.getChildNodes(parent),
-    textNodeIdx = hasFosterParent &#x26;&#x26; lastFosterParentingLocation.beforeElement ?
+    textNodeIdx = hasFosterParent &amp;&amp; lastFosterParentingLocation.beforeElement ?
     siblings.indexOf(lastFosterParentingLocation.beforeElement) - 1 :
     siblings.length - 1,
 ...</pre></li>
@@ -7508,21 +7500,21 @@ var hasFosterParent = this.<span class="apidocCodeKeywordSpan">_shouldFosterPare
     if (ns === NS.HTML)
         return false;
 
-    if (this.treeAdapter.getTagName(current) === $.ANNOTATION_XML &#x26;&#x26; ns === NS.MATHML &#x26;&#x26;
-        token.type === Tokenizer.START_TAG_TOKEN &#x26;&#x26; token.tagName === $.SVG)
+    if (this.treeAdapter.getTagName(current) === $.ANNOTATION_XML &amp;&amp; ns === NS.MATHML &amp;&amp;
+        token.type === Tokenizer.START_TAG_TOKEN &amp;&amp; token.tagName === $.SVG)
         return false;
 
     var isCharacterToken = token.type === Tokenizer.CHARACTER_TOKEN ||
                            token.type === Tokenizer.NULL_CHARACTER_TOKEN ||
                            token.type === Tokenizer.WHITESPACE_CHARACTER_TOKEN,
-        isMathMLTextStartTag = token.type === Tokenizer.START_TAG_TOKEN &#x26;&#x26;
-                               token.tagName !== $.MGLYPH &#x26;&#x26;
+        isMathMLTextStartTag = token.type === Tokenizer.START_TAG_TOKEN &amp;&amp;
+                               token.tagName !== $.MGLYPH &amp;&amp;
                                token.tagName !== $.MALIGNMARK;
 
-    if ((isMathMLTextStartTag || isCharacterToken) &#x26;&#x26; this._isIntegrationPoint(current, NS.MATHML))
+    if ((isMathMLTextStartTag || isCharacterToken) &amp;&amp; this._isIntegrationPoint(current, NS.MATHML))
         return false;
 
-    if ((token.type === Tokenizer.START_TAG_TOKEN || isCharacterToken) &#x26;&#x26; this._isIntegrationPoint(current, NS.HTML))
+    if ((token.type === Tokenizer.START_TAG_TOKEN || isCharacterToken) &amp;&amp; this._isIntegrationPoint(current, NS.HTML))
         return false;
 
     return token.type !== Tokenizer.EOF_TOKEN;
@@ -7572,7 +7564,7 @@ else if (tn === $.TITLE)
     p.<span class="apidocCodeKeywordSpan">_switchToTextParsing</span>(token, Tokenizer.MODE.RCDATA);
 
 //NOTE: here we assume that we always act as an interactive user agent with enabled scripting, so we parse
-//&#x3c;noscript&#x3e; as a rawtext.
+//&lt;noscript&gt; as a rawtext.
 else if (tn === $.NOSCRIPT || tn === $.NOFRAMES || tn === $.STYLE)
     p._switchToTextParsing(token, Tokenizer.MODE.RAWTEXT);
 
@@ -7603,10 +7595,10 @@ else if (tn === $.SCRIPT)
 * @example
 *```js
 *
-* const parse5 = require(&#x27;parse5&#x27;);
+* const parse5 = require('parse5');
 *
 * // Uses the default tree adapter for parsing.
-* const document = parse5.<span class="apidocCodeKeywordSpan">parse</span>(&#x27;&#x3c;div&#x3e;&#x3c;/div&#x3e;&#x27;, {
+* const document = parse5.<span class="apidocCodeKeywordSpan">parse</span>('&lt;div&gt;&lt;/div&gt;', {
 *     treeAdapter: parse5.treeAdapters.default
 * });
 *
@@ -7627,15 +7619,15 @@ else if (tn === $.SCRIPT)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">parseFragment = function (html, fragmentContext) {
-    //NOTE: use &#x3c;template&#x3e; element as a fragment context if context element was not provided,
-    //so we will parse in &#x22;forgiving&#x22; manner
+    //NOTE: use &lt;template&gt; element as a fragment context if context element was not provided,
+    //so we will parse in "forgiving" manner
     if (!fragmentContext)
         fragmentContext = this.treeAdapter.createElement($.TEMPLATE, NS.HTML, []);
 
-    //NOTE: create fake element which will be used as &#x27;document&#x27; for fragment parsing.
-    //This is important for jsdom there &#x27;document&#x27; can&#x27;t be recreated, therefore
+    //NOTE: create fake element which will be used as 'document' for fragment parsing.
+    //This is important for jsdom there 'document' can't be recreated, therefore
     //fragment parsing causes messing of the main `document`.
-    var documentMock = this.treeAdapter.createElement(&#x27;documentmock&#x27;, NS.HTML, []);
+    var documentMock = this.treeAdapter.createElement('documentmock', NS.HTML, []);
 
     this._bootstrap(documentMock, fragmentContext);
 
@@ -7662,18 +7654,18 @@ else if (tn === $.SCRIPT)
 * @example
 * ```js
 *
-* const parse5 = require(&#x27;parse5&#x27;);
+* const parse5 = require('parse5');
 *
-* const documentFragment = parse5.<span class="apidocCodeKeywordSpan">parseFragment</span>(&#x27;&#x3c;table&#x3e;&#x3c;/table&#
-x3e;&#x27;);
+* const documentFragment = parse5.<span class="apidocCodeKeywordSpan">parseFragment</span>('&lt;table&gt;&lt;/table&amp;#
+x3e;');
 *
-* console.log(documentFragment.childNodes[0].tagName); //&#x3e; &#x27;table&#x27;
+* console.log(documentFragment.childNodes[0].tagName); //&gt; 'table'
 *
-* // Parses the html fragment in the context of the parsed &#x3c;table&#x3e; element.
-* const trFragment = parser.parseFragment(documentFragment.childNodes[0], &#x27;&#x3c;tr&#x3e;&#x3c;td&#x3e;Shake it, baby&#x3c;/
-td&#x3e;&#x3c;/tr&#x3e;&#x27;);
+* // Parses the html fragment in the context of the parsed &lt;table&gt; element.
+* const trFragment = parser.parseFragment(documentFragment.childNodes[0], '&lt;tr&gt;&lt;td&gt;Shake it, baby&lt;/
+td&gt;&lt;/tr&gt;');
 *
-* console.log(trFragment.childNodes[0].childNodes[0].tagName); //&#x3e; &#x27;td&#x27;
+* console.log(trFragment.childNodes[0].childNodes[0].tagName); //&gt; 'td'
 ...</pre></li>
     </ul>
 
@@ -7689,7 +7681,7 @@ td&#x3e;&#x3c;/tr&#x3e;&#x27;);
     <li>description and source-code<pre class="apidocCodePre">runParsingLoopForCurrentChunk = function (writeCallback, scriptHandler) {
     this._runParsingLoop(scriptHandler);
 
-    if (scriptHandler &#x26;&#x26; this.pendingScript) {
+    if (scriptHandler &amp;&amp; this.pendingScript) {
         var script = this.pendingScript;
 
         this.pendingScript = null;
@@ -7715,7 +7707,7 @@ this.parser.<span class="apidocCodeKeywordSpan">runParsingLoopForCurrentChunk</s
 
 ParserStream.prototype._resume = function () {
 if (!this.pausedByScript)
-    throw new Error(&#x27;Parser was already resumed&#x27;);
+    throw new Error('Parser was already resumed');
 
 while (this.pendingHtmlInsertions.length) {
 ...</pre></li>
@@ -7742,7 +7734,7 @@ while (this.pendingHtmlInsertions.length) {
     this.parser.openElements.pop();
     this.parser._insertFakeElement($.BODY);
     this.parser._insertFakeElement($.PRE);
-    this.parser.treeAdapter.insertText(this.parser.openElements.current, &#x27;\n&#x27;);
+    this.parser.treeAdapter.insertText(this.parser.openElements.current, '\n');
     this.parser.<span class="apidocCodeKeywordSpan">switchToPlaintextParsing</span>();
 };
 
@@ -7793,7 +7785,7 @@ inherits(PlainTextConversionStream, ParserStream);
     <li>description and source-code<pre class="apidocCodePre">_indexOf = function (element) {
     var idx = -1;
 
-    for (var i = this.stackTop; i &#x3e;= 0; i--) {
+    for (var i = this.stackTop; i &gt;= 0; i--) {
         if (this.items[i] === element) {
             idx = i;
             break;
@@ -7802,7 +7794,7 @@ inherits(PlainTextConversionStream, ParserStream);
     return idx;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    if (this.tmplCount &#x3e; 0 &#x26;&#x26; this._isInTemplate())
+    if (this.tmplCount &gt; 0 &amp;&amp; this._isInTemplate())
         this.tmplCount--;
 
     this._updateCurrentElement();
@@ -7829,15 +7821,15 @@ OpenElementStack.prototype.replace = function (oldElement, newElement) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_isInTemplate = function () {
-    return this.currentTagName === $.TEMPLATE &#x26;&#x26; this.treeAdapter.getNamespaceURI(this.current) === NS.HTML;
+    return this.currentTagName === $.TEMPLATE &amp;&amp; this.treeAdapter.getNamespaceURI(this.current) === NS.HTML;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-return this.currentTagName === $.TEMPLATE &#x26;&#x26; this.treeAdapter.getNamespaceURI(this.current) === NS.HTML;
+return this.currentTagName === $.TEMPLATE &amp;&amp; this.treeAdapter.getNamespaceURI(this.current) === NS.HTML;
 };
 
 OpenElementStack.prototype._updateCurrentElement = function () {
 this.current = this.items[this.stackTop];
-this.currentTagName = this.current &#x26;&#x26; this.treeAdapter.getTagName(this.current);
+this.currentTagName = this.current &amp;&amp; this.treeAdapter.getTagName(this.current);
 
 this.currentTmplContent = this.<span class="apidocCodeKeywordSpan">_isInTemplate</span>() ? this.treeAdapter.getTemplateContent(
 this.current) : null;
@@ -7861,7 +7853,7 @@ this._updateCurrentElement();
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_updateCurrentElement = function () {
     this.current = this.items[this.stackTop];
-    this.currentTagName = this.current &#x26;&#x26; this.treeAdapter.getTagName(this.current);
+    this.currentTagName = this.current &amp;&amp; this.treeAdapter.getTagName(this.current);
 
     this.currentTmplContent = this._isInTemplate() ? this.treeAdapter.getTemplateContent(this.current) : null;
 }</pre></li>
@@ -7894,17 +7886,17 @@ OpenElementStack.prototype.pop = function () {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">clearBackToTableBodyContext = function () {
-    while (this.currentTagName !== $.TBODY &#x26;&#x26;
-           this.currentTagName !== $.TFOOT &#x26;&#x26;
-           this.currentTagName !== $.THEAD &#x26;&#x26;
-           this.currentTagName !== $.TEMPLATE &#x26;&#x26;
+    while (this.currentTagName !== $.TBODY &amp;&amp;
+           this.currentTagName !== $.TFOOT &amp;&amp;
+           this.currentTagName !== $.THEAD &amp;&amp;
+           this.currentTagName !== $.TEMPLATE &amp;&amp;
            this.currentTagName !== $.HTML ||
            this.treeAdapter.getNamespaceURI(this.current) !== NS.HTML)
         this.pop();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-//12.2.5.4.13 The &#x22;in table body&#x22; insertion mode
+//12.2.5.4.13 The "in table body" insertion mode
 //------------------------------------------------------------------
 function startTagInTableBody(p, token) {
 var tn = token.tagName;
@@ -7931,8 +7923,8 @@ else if (tn === $.TH || tn === $.TD) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">clearBackToTableContext = function () {
-    while (this.currentTagName !== $.TABLE &#x26;&#x26;
-           this.currentTagName !== $.TEMPLATE &#x26;&#x26;
+    while (this.currentTagName !== $.TABLE &amp;&amp;
+           this.currentTagName !== $.TEMPLATE &amp;&amp;
            this.currentTagName !== $.HTML ||
            this.treeAdapter.getNamespaceURI(this.current) !== NS.HTML)
         this.pop();
@@ -7966,15 +7958,15 @@ p.openElements.clearBackToTableContext();
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">clearBackToTableRowContext = function () {
-    while (this.currentTagName !== $.TR &#x26;&#x26;
-           this.currentTagName !== $.TEMPLATE &#x26;&#x26;
+    while (this.currentTagName !== $.TR &amp;&amp;
+           this.currentTagName !== $.TEMPLATE &amp;&amp;
            this.currentTagName !== $.HTML ||
            this.treeAdapter.getNamespaceURI(this.current) !== NS.HTML)
         this.pop();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-//12.2.5.4.14 The &#x22;in row&#x22; insertion mode
+//12.2.5.4.14 The "in row" insertion mode
 //------------------------------------------------------------------
 function startTagInRow(p, token) {
 var tn = token.tagName;
@@ -8001,7 +7993,7 @@ else if (tn === $.CAPTION || tn === $.COL || tn === $.COLGROUP || tn === $.TBODY
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">contains = function (element) {
-    return this._indexOf(element) &#x3e; -1;
+    return this._indexOf(element) &gt; -1;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 var unopenIdx = listLength,
@@ -8011,14 +8003,13 @@ do {
     unopenIdx--;
     entry = this.activeFormattingElements.entries[unopenIdx];
 
-    if (entry.type === FormattingElementList.MARKER_ENTRY || this.openElements.<span class="apidocCodeKeywordSpan">contains</span
->(entry.element)) {
+    if (entry.type === FormattingElementList.MARKER_ENTRY || this.openElements.<span class="apidocCodeKeywordSpan">contains</span>(entry.element)) {
         unopenIdx++;
         break;
     }
-} while (unopenIdx &#x3e; 0);
+} while (unopenIdx &gt; 0);
 
-for (var i = unopenIdx; i &#x3c; listLength; i++) {
+for (var i = unopenIdx; i &lt; listLength; i++) {
     entry = this.activeFormattingElements.entries[i];
 ...</pre></li>
     </ul>
@@ -8065,7 +8056,7 @@ this.openElements.generateImpliedEndTagsWithExclusion($.P);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">generateImpliedEndTagsWithExclusion = function (exclusionTagName) {
-    while (isImpliedEndTagRequired(this.currentTagName) &#x26;&#x26; this.currentTagName !== exclusionTagName)
+    while (isImpliedEndTagRequired(this.currentTagName) &amp;&amp; this.currentTagName !== exclusionTagName)
         this.pop();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -8082,7 +8073,7 @@ this.openElements.popUntilTagNamePopped($.P);
 
 //Insertion modes
 Parser.prototype._resetInsertionMode = function () {
-for (var i = this.openElements.stackTop, last = false; i &#x3e;= 0; i--) {
+for (var i = this.openElements.stackTop, last = false; i &gt;= 0; i--) {
     var element = this.openElements.items[i];
 ...</pre></li>
     </ul>
@@ -8099,7 +8090,7 @@ for (var i = this.openElements.stackTop, last = false; i &#x3e;= 0; i--) {
     <li>description and source-code<pre class="apidocCodePre">getCommonAncestor = function (element) {
     var elementIdx = this._indexOf(element);
 
-    return --elementIdx &#x3e;= 0 ? this.items[elementIdx] : null;
+    return --elementIdx &gt;= 0 ? this.items[elementIdx] : null;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
@@ -8116,7 +8107,7 @@ nextElement = p.openElements.<span class="apidocCodeKeywordSpan">getCommonAncest
 nextElement = p.openElements.getCommonAncestor(element);
 
 var elementEntry = p.activeFormattingElements.getElementEntry(element),
-    counterOverflow = elementEntry &#x26;&#x26; i &#x3e;= AA_INNER_LOOP_ITER,
+    counterOverflow = elementEntry &amp;&amp; i &gt;= AA_INNER_LOOP_ITER,
 ...</pre></li>
     </ul>
 
@@ -8130,14 +8121,14 @@ var elementEntry = p.activeFormattingElements.getElementEntry(element),
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">hasInButtonScope = function (tagName) {
-    for (var i = this.stackTop; i &#x3e;= 0; i--) {
+    for (var i = this.stackTop; i &gt;= 0; i--) {
         var tn = this.treeAdapter.getTagName(this.items[i]),
             ns = this.treeAdapter.getNamespaceURI(this.items[i]);
 
-        if (tn === tagName &#x26;&#x26; ns === NS.HTML)
+        if (tn === tagName &amp;&amp; ns === NS.HTML)
             return true;
 
-        if (tn === $.BUTTON &#x26;&#x26; ns === NS.HTML || isScopingElement(tn, ns))
+        if (tn === $.BUTTON &amp;&amp; ns === NS.HTML || isScopingElement(tn, ns))
             return false;
     }
 
@@ -8172,14 +8163,14 @@ if (p.openElements.hasInButtonScope($.P))
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">hasInListItemScope = function (tagName) {
-    for (var i = this.stackTop; i &#x3e;= 0; i--) {
+    for (var i = this.stackTop; i &gt;= 0; i--) {
         var tn = this.treeAdapter.getTagName(this.items[i]),
             ns = this.treeAdapter.getNamespaceURI(this.items[i]);
 
-        if (tn === tagName &#x26;&#x26; ns === NS.HTML)
+        if (tn === tagName &amp;&amp; ns === NS.HTML)
             return true;
 
-        if ((tn === $.UL || tn === $.OL) &#x26;&#x26; ns === NS.HTML || isScopingElement(tn, ns))
+        if ((tn === $.UL || tn === $.OL) &amp;&amp; ns === NS.HTML || isScopingElement(tn, ns))
             return false;
     }
 
@@ -8214,11 +8205,11 @@ var tn = token.tagName;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">hasInScope = function (tagName) {
-    for (var i = this.stackTop; i &#x3e;= 0; i--) {
+    for (var i = this.stackTop; i &gt;= 0; i--) {
         var tn = this.treeAdapter.getTagName(this.items[i]),
             ns = this.treeAdapter.getNamespaceURI(this.items[i]);
 
-        if (tn === tagName &#x26;&#x26; ns === NS.HTML)
+        if (tn === tagName &amp;&amp; ns === NS.HTML)
             return true;
 
         if (isScopingElement(tn, ns))
@@ -8231,13 +8222,13 @@ var tn = token.tagName;
         currentToken = token;
         parserProto._processToken.call(this, token);
 
-        //NOTE: &#x3c;body&#x3e; and &#x3c;html&#x3e; are never popped from the stack, so we need to updated
+        //NOTE: &lt;body&gt; and &lt;html&gt; are never popped from the stack, so we need to updated
         //their end location explicitly.
-        if (token.type === Tokenizer.END_TAG_TOKEN &#x26;&#x26;
+        if (token.type === Tokenizer.END_TAG_TOKEN &amp;&amp;
             (token.tagName === $.HTML ||
-             token.tagName === $.BODY &#x26;&#x26; this.openElements.<span class="apidocCodeKeywordSpan">hasInScope</span>($.BODY
+             token.tagName === $.BODY &amp;&amp; this.openElements.<span class="apidocCodeKeywordSpan">hasInScope</span>($.BODY
 ))) {
-            for (var i = this.openElements.stackTop; i &#x3e;= 0; i--) {
+            for (var i = this.openElements.stackTop; i &gt;= 0; i--) {
 var element = this.openElements.items[i];
 
 if (this.treeAdapter.getTagName(element) === token.tagName) {
@@ -8257,7 +8248,7 @@ if (this.treeAdapter.getTagName(element) === token.tagName) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">hasInSelectScope = function (tagName) {
-    for (var i = this.stackTop; i &#x3e;= 0; i--) {
+    for (var i = this.stackTop; i &gt;= 0; i--) {
         var tn = this.treeAdapter.getTagName(this.items[i]),
             ns = this.treeAdapter.getNamespaceURI(this.items[i]);
 
@@ -8267,7 +8258,7 @@ if (this.treeAdapter.getTagName(element) === token.tagName) {
         if (tn === tagName)
             return true;
 
-        if (tn !== $.OPTION &#x26;&#x26; tn !== $.OPTGROUP)
+        if (tn !== $.OPTION &amp;&amp; tn !== $.OPTGROUP)
             return false;
     }
 
@@ -8302,7 +8293,7 @@ else if (tn === $.INPUT || tn === $.KEYGEN || tn === $.TEXTAREA || tn === $.SELE
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">hasInTableScope = function (tagName) {
-    for (var i = this.stackTop; i &#x3e;= 0; i--) {
+    for (var i = this.stackTop; i &gt;= 0; i--) {
         var tn = this.treeAdapter.getTagName(this.items[i]),
             ns = this.treeAdapter.getNamespaceURI(this.items[i]);
 
@@ -8347,11 +8338,11 @@ function inputStartTagInTable(p, token) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">hasNumberedHeaderInScope = function () {
-    for (var i = this.stackTop; i &#x3e;= 0; i--) {
+    for (var i = this.stackTop; i &gt;= 0; i--) {
         var tn = this.treeAdapter.getTagName(this.items[i]),
             ns = this.treeAdapter.getNamespaceURI(this.items[i]);
 
-        if ((tn === $.H1 || tn === $.H2 || tn === $.H3 || tn === $.H4 || tn === $.H5 || tn === $.H6) &#x26;&#x26; ns === NS.HTML)
+        if ((tn === $.H1 || tn === $.H2 || tn === $.H3 || tn === $.H4 || tn === $.H5 || tn === $.H6) &amp;&amp; ns === NS.HTML)
             return true;
 
         if (isScopingElement(tn, ns))
@@ -8389,7 +8380,7 @@ var tn = token.tagName;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">hasTableBodyContextInTableScope = function () {
-    for (var i = this.stackTop; i &#x3e;= 0; i--) {
+    for (var i = this.stackTop; i &gt;= 0; i--) {
         var tn = this.treeAdapter.getTagName(this.items[i]),
             ns = this.treeAdapter.getNamespaceURI(this.items[i]);
 
@@ -8455,7 +8446,7 @@ p.openElements.<span class="apidocCodeKeywordSpan">insertAfter</span>(furthestBl
 function callAdoptionAgency(p, token) {
 var formattingElementEntry;
 
-for (var i = 0; i &#x3c; AA_OUTER_LOOP_ITER; i++) {
+for (var i = 0; i &lt; AA_OUTER_LOOP_ITER; i++) {
 ...</pre></li>
     </ul>
 
@@ -8469,7 +8460,7 @@ for (var i = 0; i &#x3c; AA_OUTER_LOOP_ITER; i++) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isRootHtmlElementCurrent = function () {
-    return this.stackTop === 0 &#x26;&#x26; this.currentTagName === $.HTML;
+    return this.stackTop === 0 &amp;&amp; this.currentTagName === $.HTML;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
         p._appendElement(token, NS.HTML);
@@ -8479,15 +8470,15 @@ for (var i = 0; i &#x3c; AA_OUTER_LOOP_ITER; i++) {
 }
 
 function endTagInFrameset(p, token) {
-    if (token.tagName === $.FRAMESET &#x26;&#x26; !p.openElements.<span class="apidocCodeKeywordSpan">isRootHtmlElementCurrent</
-span>()) {
+    if (token.tagName === $.FRAMESET &amp;&amp; !p.openElements.<span class="apidocCodeKeywordSpan">isRootHtmlElementCurrent<!--
+span-->()) {
         p.openElements.pop();
 
-        if (!p.fragmentContext &#x26;&#x26; p.openElements.currentTagName !== $.FRAMESET)
+        if (!p.fragmentContext &amp;&amp; p.openElements.currentTagName !== $.FRAMESET)
             p.insertionMode = AFTER_FRAMESET_MODE;
     }
 }
-...</pre></li>
+...</span></pre></li>
     </ul>
 
 
@@ -8502,7 +8493,7 @@ span>()) {
     <li>description and source-code<pre class="apidocCodePre">pop = function () {
     this.stackTop--;
 
-    if (this.tmplCount &#x3e; 0 &#x26;&#x26; this._isInTemplate())
+    if (this.tmplCount &gt; 0 &amp;&amp; this._isInTemplate())
         this.tmplCount--;
 
     this._updateCurrentElement();
@@ -8536,7 +8527,7 @@ FormattingElementList.prototype.clearToLastMarker = function () {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">popAllUpToHtmlElement = function () {
-    //NOTE: here we assume that root &#x3c;html&#x3e; element is always first in the open element stack, so
+    //NOTE: here we assume that root &lt;html&gt; element is always first in the open element stack, so
     //we perform this fast stack clean up.
     this.stackTop = 0;
     this._updateCurrentElement();
@@ -8547,7 +8538,7 @@ FormattingElementList.prototype.clearToLastMarker = function () {
 function framesetStartTagInBody(p, token) {
 var bodyElement = p.openElements.tryPeekProperlyNestedBodyElement();
 
-if (p.framesetOk &#x26;&#x26; bodyElement) {
+if (p.framesetOk &amp;&amp; bodyElement) {
     p.treeAdapter.detachNode(bodyElement);
     p.openElements.<span class="apidocCodeKeywordSpan">popAllUpToHtmlElement</span>();
     p._insertElement(token, NS.HTML);
@@ -8570,7 +8561,7 @@ if (p.openElements.hasInButtonScope($.P))
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">popUntilElementPopped = function (element) {
-    while (this.stackTop &#x3e; -1) {
+    while (this.stackTop &gt; -1) {
         var poppedElement = this.current;
 
         this.pop();
@@ -8608,13 +8599,13 @@ if (p.openElements.hasInButtonScope($.P))
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">popUntilNumberedHeaderPopped = function () {
-    while (this.stackTop &#x3e; -1) {
+    while (this.stackTop &gt; -1) {
         var tn = this.currentTagName,
             ns = this.treeAdapter.getNamespaceURI(this.current);
 
         this.pop();
 
-        if (tn === $.H1 || tn === $.H2 || tn === $.H3 || tn === $.H4 || tn === $.H5 || tn === $.H6 &#x26;&#x26; ns === NS.HTML)
+        if (tn === $.H1 || tn === $.H2 || tn === $.H3 || tn === $.H4 || tn === $.H5 || tn === $.H6 &amp;&amp; ns === NS.HTML)
             break;
     }
 }</pre></li>
@@ -8647,13 +8638,13 @@ if (p.openElements.hasInScope(tn)) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">popUntilTableCellPopped = function () {
-    while (this.stackTop &#x3e; -1) {
+    while (this.stackTop &gt; -1) {
         var tn = this.currentTagName,
             ns = this.treeAdapter.getNamespaceURI(this.current);
 
         this.pop();
 
-        if (tn === $.TD || tn === $.TH &#x26;&#x26; ns === NS.HTML)
+        if (tn === $.TD || tn === $.TH &amp;&amp; ns === NS.HTML)
             break;
     }
 }</pre></li>
@@ -8686,13 +8677,13 @@ this.openElements.popUntilTagNamePopped($.P);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">popUntilTagNamePopped = function (tagName) {
-    while (this.stackTop &#x3e; -1) {
+    while (this.stackTop &gt; -1) {
         var tn = this.currentTagName,
             ns = this.treeAdapter.getNamespaceURI(this.current);
 
         this.pop();
 
-        if (tn === tagName &#x26;&#x26; ns === NS.HTML)
+        if (tn === tagName &amp;&amp; ns === NS.HTML)
             break;
     }
 }</pre></li>
@@ -8709,7 +8700,7 @@ this.openElements.<span class="apidocCodeKeywordSpan">popUntilTagNamePopped</spa
 
 //Insertion modes
 Parser.prototype._resetInsertionMode = function () {
-for (var i = this.openElements.stackTop, last = false; i &#x3e;= 0; i--) {
+for (var i = this.openElements.stackTop, last = false; i &gt;= 0; i--) {
     var element = this.openElements.items[i];
 ...</pre></li>
     </ul>
@@ -8734,8 +8725,8 @@ for (var i = this.openElements.stackTop, last = false; i &#x3e;= 0; i--) {
     <li>example usage<pre class="apidocCodePre">...
             var element = entry.element,
                 elementAttrs = this.treeAdapter.getAttrList(element),
-                isCandidate = this.treeAdapter.getTagName(element) === neTagName &#x26;&#x26;
-                              this.treeAdapter.getNamespaceURI(element) === neNamespaceURI &#x26;&#x26;
+                isCandidate = this.treeAdapter.getTagName(element) === neTagName &amp;&amp;
+                              this.treeAdapter.getNamespaceURI(element) === neNamespaceURI &amp;&amp;
                               elementAttrs.length === neAttrsLength;
 
             if (isCandidate)
@@ -8743,7 +8734,7 @@ for (var i = this.openElements.stackTop, last = false; i &#x3e;= 0; i--) {
         }
     }
 
-    return candidates.length &#x3c; NOAH_ARK_CAPACITY ? [] : candidates;
+    return candidates.length &lt; NOAH_ARK_CAPACITY ? [] : candidates;
 };
 
 FormattingElementList.prototype._ensureNoahArkCondition = function (newElement) {
@@ -8760,7 +8751,7 @@ FormattingElementList.prototype._ensureNoahArkCondition = function (newElement) 
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">remove = function (element) {
-    for (var i = this.stackTop; i &#x3e;= 0; i--) {
+    for (var i = this.stackTop; i &gt;= 0; i--) {
         if (this.items[i] === element) {
             this.items.splice(i, 1);
             this.stackTop--;
@@ -8770,7 +8761,7 @@ FormattingElementList.prototype._ensureNoahArkCondition = function (newElement) 
     }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-counterOverflow = elementEntry &#x26;&#x26; i &#x3e;= AA_INNER_LOOP_ITER,
+counterOverflow = elementEntry &amp;&amp; i &gt;= AA_INNER_LOOP_ITER,
 shouldRemoveFromOpenElements = !elementEntry || counterOverflow;
 
         if (shouldRemoveFromOpenElements) {
@@ -8834,10 +8825,10 @@ function aaInsertLastNodeInCommonAncestor(p, commonAncestor, lastElement) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">tryPeekProperlyNestedBodyElement = function () {
-    //Properly nested &#x3c;body&#x3e; element (should be second element in stack).
+    //Properly nested &lt;body&gt; element (should be second element in stack).
     var element = this.items[1];
 
-    return element &#x26;&#x26; this.treeAdapter.getTagName(element) === $.BODY ? element : null;
+    return element &amp;&amp; this.treeAdapter.getTagName(element) === $.BODY ? element : null;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
@@ -8849,7 +8840,7 @@ function htmlStartTagInBody(p, token) {
 function bodyStartTagInBody(p, token) {
     var bodyElement = p.openElements.<span class="apidocCodeKeywordSpan">tryPeekProperlyNestedBodyElement</span>();
 
-    if (bodyElement &#x26;&#x26; p.openElements.tmplCount === 0) {
+    if (bodyElement &amp;&amp; p.openElements.tmplCount === 0) {
         p.framesetOk = false;
         p.treeAdapter.adoptAttributes(bodyElement, token.attrs);
     }
@@ -8979,7 +8970,7 @@ if (token.type === Tokenizer.START_TAG_TOKEN)
     if (!this.inForeignContent) {
         var previousNs = this.namespaceStack[this.namespaceStackTop - 1];
 
-        if (previousNs === NS.SVG &#x26;&#x26; foreignContent.SVG_TAG_NAMES_ADJUSTMENT_MAP[tn])
+        if (previousNs === NS.SVG &amp;&amp; foreignContent.SVG_TAG_NAMES_ADJUSTMENT_MAP[tn])
             tn = foreignContent.SVG_TAG_NAMES_ADJUSTMENT_MAP[tn];
 
         //NOTE: check for exit from integration point
@@ -8987,8 +8978,8 @@ if (token.type === Tokenizer.START_TAG_TOKEN)
             this._leaveCurrentNamespace();
     }
 
-    else if (tn === $.SVG &#x26;&#x26; this.currentNamespace === NS.SVG ||
-             tn === $.MATH &#x26;&#x26; this.currentNamespace === NS.MATHML)
+    else if (tn === $.SVG &amp;&amp; this.currentNamespace === NS.SVG ||
+             tn === $.MATH &amp;&amp; this.currentNamespace === NS.MATHML)
         this._leaveCurrentNamespace();
 
     // NOTE: adjust end tag name as well for consistency
@@ -9005,7 +8996,7 @@ if (token.type === Tokenizer.START_TAG_TOKEN)
 else if (token.type === Tokenizer.END_TAG_TOKEN)
     this.<span class="apidocCodeKeywordSpan">_handleEndTagToken</span>(token);
 
-else if (token.type === Tokenizer.NULL_CHARACTER_TOKEN &#x26;&#x26; this.inForeignContent) {
+else if (token.type === Tokenizer.NULL_CHARACTER_TOKEN &amp;&amp; this.inForeignContent) {
     token.type = Tokenizer.CHARACTER_TOKEN;
     token.chars = UNICODE.REPLACEMENT_CHARACTER;
 }
@@ -9052,7 +9043,7 @@ else if (this.skipNextNewLine) {
 
         tn = token.tagName;
 
-        if (!token.selfClosing &#x26;&#x26; foreignContent.isIntegrationPoint(tn, currentNs, token.attrs))
+        if (!token.selfClosing &amp;&amp; foreignContent.isIntegrationPoint(tn, currentNs, token.attrs))
             this._enterNamespace(NS.HTML);
     }
 
@@ -9079,7 +9070,7 @@ if (token.type === Tokenizer.START_TAG_TOKEN)
 else if (token.type === Tokenizer.END_TAG_TOKEN)
     this._handleEndTagToken(token);
 
-else if (token.type === Tokenizer.NULL_CHARACTER_TOKEN &#x26;&#x26; this.inForeignContent) {
+else if (token.type === Tokenizer.NULL_CHARACTER_TOKEN &amp;&amp; this.inForeignContent) {
     token.type = Tokenizer.CHARACTER_TOKEN;
     token.chars = UNICODE.REPLACEMENT_CHARACTER;
 ...</pre></li>
@@ -9139,7 +9130,7 @@ if (currentNs === NS.MATHML)
     else if (token.type === Tokenizer.END_TAG_TOKEN)
         this._handleEndTagToken(token);
 
-    else if (token.type === Tokenizer.NULL_CHARACTER_TOKEN &#x26;&#x26; this.inForeignContent) {
+    else if (token.type === Tokenizer.NULL_CHARACTER_TOKEN &amp;&amp; this.inForeignContent) {
         token.type = Tokenizer.CHARACTER_TOKEN;
         token.chars = UNICODE.REPLACEMENT_CHARACTER;
     }
@@ -9148,7 +9139,7 @@ if (currentNs === NS.MATHML)
         if (token.type !== Tokenizer.HIBERNATION_TOKEN)
             this.skipNextNewLine = false;
 
-        if (token.type === Tokenizer.WHITESPACE_CHARACTER_TOKEN &#x26;&#x26; token.chars[0] === &#x27;\n&#x27;) {
+        if (token.type === Tokenizer.WHITESPACE_CHARACTER_TOKEN &amp;&amp; token.chars[0] === '\n') {
             if (token.chars.length === 1)
                 return this.getNextToken();
 
@@ -9219,9 +9210,9 @@ if (this.skipNextNewLine) {
         if (closingToken.location) {
             var ctLocation = closingToken.location,
                 tn = treeAdapter.getTagName(element),
-            // NOTE: For cases like &#x3c;p&#x3e; &#x3c;p&#x3e; &#x3c;/p&#x3e; - First &#x27;p&#x27; closes without a closing tag and
-            // for cases like &#x3c;td&#x3e; &#x3c;p&#x3e; &#x3c;/td&#x3e; - &#x27;p&#x27; closes without a closing tag
-                isClosingEndTag = closingToken.type === Tokenizer.END_TAG_TOKEN &#x26;&#x26;
+            // NOTE: For cases like &lt;p&gt; &lt;p&gt; &lt;/p&gt; - First 'p' closes without a closing tag and
+            // for cases like &lt;td&gt; &lt;p&gt; &lt;/td&gt; - 'p' closes without a closing tag
+                isClosingEndTag = closingToken.type === Tokenizer.END_TAG_TOKEN &amp;&amp;
                                   tn === closingToken.tagName;
 
             if (isClosingEndTag) {
@@ -9258,7 +9249,7 @@ if (this.skipNextNewLine) {
         };
 
         parser.openElements.popAllUpToHtmlElement = function () {
-            for (var i = this.stackTop; i &#x3e; 0; i--)
+            for (var i = this.stackTop; i &gt; 0; i--)
                 setEndLocation(this.items[i], currentToken);
 
             OpenElementStack.prototype.popAllUpToHtmlElement.call(this);
@@ -9275,7 +9266,7 @@ if (this.skipNextNewLine) {
 
         // NOTE: generate location info for elements
         // that remains on open element stack
-        for (var i = parser.openElements.stackTop; i &#x3e;= 0; i--)
+        for (var i = parser.openElements.stackTop; i &gt;= 0; i--)
             setEndLocation(parser.openElements.items[i], currentToken);
     };
 
@@ -9290,12 +9281,12 @@ if (this.skipNextNewLine) {
         currentToken = token;
         parserProto._processToken.call(this, token);
 
-        //NOTE: &#x3c;body&#x3e; and &#x3c;html&#x3e; are never popped from the stack, so we need to updated
+        //NOTE: &lt;body&gt; and &lt;html&gt; are never popped from the stack, so we need to updated
         //their end location explicitly.
-        if (token.type === Tokenizer.END_TAG_TOKEN &#x26;&#x26;
+        if (token.type === Tokenizer.END_TAG_TOKEN &amp;&amp;
             (token.tagName === $.HTML ||
-             token.tagName === $.BODY &#x26;&#x26; this.openElements.hasInScope($.BODY))) {
-            for (var i = this.openElements.stackTop; i &#x3e;= 0; i--) {
+             token.tagName === $.BODY &amp;&amp; this.openElements.hasInScope($.BODY))) {
+            for (var i = this.openElements.stackTop; i &gt;= 0; i--) {
                 var element = this.openElements.items[i];
 
                 if (this.treeAdapter.getTagName(element) === token.tagName) {
@@ -9390,7 +9381,7 @@ this._bootstrap(document, null);
     }
 }
 
-// NOTE: we&#x27;ve hit the end of chunk, stop processing at this point
+// NOTE: we've hit the end of chunk, stop processing at this point
 else if (!this.lastChunkWritten) {
     this.endOfChunkHit = true;
     return $.EOF;
@@ -9421,7 +9412,7 @@ else if (!this.lastChunkWritten) {
         }
     }
 
-    // NOTE: we&#x27;ve hit the end of chunk, stop processing at this point
+    // NOTE: we've hit the end of chunk, stop processing at this point
     else if (!this.lastChunkWritten) {
         this.endOfChunkHit = true;
         return $.EOF;
@@ -9437,7 +9428,7 @@ this.skipNextNewLine = false;
 
 //OPTIMIZATION: first perform check if the code point in the allowed range that covers most common
 //HTML input (e.g. ASCII codes) to avoid performance-cost operations for high-range code points.
-return cp &#x3e;= 0xD800 ? this.<span class="apidocCodeKeywordSpan">_processHighRangeCodePoint</span>(cp) : cp;
+return cp &gt;= 0xD800 ? this.<span class="apidocCodeKeywordSpan">_processHighRangeCodePoint</span>(cp) : cp;
 };
 
 Preprocessor.prototype.retreat = function () {
@@ -9460,7 +9451,7 @@ if (this.pos === this.lastGapPos) {
     <li>description and source-code<pre class="apidocCodePre">advance = function () {
     this.pos++;
 
-    if (this.pos &#x3e; this.lastCharPos) {
+    if (this.pos &gt; this.lastCharPos) {
         if (!this.lastChunkWritten)
             this.endOfChunkHit = true;
 
@@ -9471,7 +9462,7 @@ if (this.pos === this.lastGapPos) {
 
     //NOTE: any U+000A LINE FEED (LF) characters that immediately follow a U+000D CARRIAGE RETURN (CR) character
     //must be ignored.
-    if (this.skipNextNewLine &#x26;&#x26; cp === $.LINE_FEED) {
+    if (this.skipNextNewLine &amp;&amp; cp === $.LINE_FEED) {
         this.skipNextNewLine = false;
         this._addGap();
         return this.advance();
@@ -9487,7 +9478,7 @@ if (this.pos === this.lastGapPos) {
 
     //OPTIMIZATION: first perform check if the code point in the allowed range that covers most common
     //HTML input (e.g. ASCII codes) to avoid performance-cost operations for high-range code points.
-    return cp &#x3e;= 0xD800 ? this._processHighRangeCodePoint(cp) : cp;
+    return cp &gt;= 0xD800 ? this._processHighRangeCodePoint(cp) : cp;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     return false;
@@ -9517,7 +9508,7 @@ Tokenizer.prototype._unconsume = function () {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">dropParsedChunk = function () {
-    if (this.pos &#x3e; this.bufferWaterline) {
+    if (this.pos &gt; this.bufferWaterline) {
         this.lastCharPos -= this.pos;
         this.droppedBufferSize += this.pos;
         this.html = this.html.substring(this.pos);
@@ -9564,7 +9555,7 @@ else if (cp === $.LESS_THAN_SIGN)
     <li>example usage<pre class="apidocCodePre">...
 ParserStream.prototype._resume = function () {
 if (!this.pausedByScript)
-    throw new Error(&#x27;Parser was already resumed&#x27;);
+    throw new Error('Parser was already resumed');
 
 while (this.pendingHtmlInsertions.length) {
     var html = this.pendingHtmlInsertions.pop();
@@ -9574,7 +9565,7 @@ while (this.pendingHtmlInsertions.length) {
 
 this.pausedByScript = false;
 
-//NOTE: keep parsing if we don&#x27;t wait for the next input chunk
+//NOTE: keep parsing if we don't wait for the next input chunk
 if (this.parser.tokenizer.active)
     this._runParsingLoop();
 ...</pre></li>
@@ -9604,7 +9595,7 @@ this.consumedAfterSnapshot = 0;
 
 Tokenizer.prototype._ensureHibernation = function () {
 if (this.preprocessor.endOfChunkHit) {
-    for (; this.consumedAfterSnapshot &#x3e; 0; this.consumedAfterSnapshot--)
+    for (; this.consumedAfterSnapshot &gt; 0; this.consumedAfterSnapshot--)
         this.preprocessor.<span class="apidocCodeKeywordSpan">retreat</span>();
 
     this.active = false;
@@ -9650,7 +9641,7 @@ return document;
 };
 
 Parser.prototype.parseFragment = function (html, fragmentContext) {
-//NOTE: use &#x3c;template&#x3e; element as a fragment context if context element was not provided,
+//NOTE: use &lt;template&gt; element as a fragment context if context element was not provided,
 ...</pre></li>
     </ul>
 
@@ -9771,8 +9762,8 @@ Parser.prototype.parseFragment = function (html, fragmentContext) {
 
     //NOTE: patch token emission methods to determine end location
     tokenizer._emitCurrentToken = function () {
-        //NOTE: if we have pending character token make it&#x27;s end location equal to the
-        //current token&#x27;s start location.
+        //NOTE: if we have pending character token make it's end location equal to the
+        //current token's start location.
         if (this.currentCharacterToken)
             this.currentCharacterToken.location.endOffset = this.currentToken.location.startOffset;
 
@@ -9781,9 +9772,9 @@ Parser.prototype.parseFragment = function (html, fragmentContext) {
     };
 
     tokenizer._emitCurrentCharacterToken = function () {
-        //NOTE: if we have character token and it&#x27;s location wasn&#x27;t set in the _emitCurrentToken(),
-        //then set it&#x27;s location at the current preprocessor position.
-        //We don&#x27;t need to increment preprocessor position, since character token
+        //NOTE: if we have character token and it's location wasn't set in the _emitCurrentToken(),
+        //then set it's location at the current preprocessor position.
+        //We don't need to increment preprocessor position, since character token
         //emission is always forced by the start of the next character token here.
         //So, we already have advanced posi ...</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -9814,3 +9805,4 @@ this._bootstrap(document, null);
     ]
 </div>
 </div>
+</body></html>
