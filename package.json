@@ -1,7 +1,7 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
     "buildNpmdoc": "parse5",
-    "description": "api documentation for [parse5 (v3.0.2)](https://github.com/inikulin/parse5) [![npm package](https://img.shields.io/npm/v/npmdoc-parse5.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-parse5) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-parse5.svg)](https://travis-ci.org/npmdoc/node-npmdoc-parse5)",
+    "description": "#### basic api documentation for  [parse5 (v3.0.2)](https://github.com/inikulin/parse5)  [![npm package](https://img.shields.io/npm/v/npmdoc-parse5.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-parse5) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-parse5.svg)](https://travis-ci.org/npmdoc/node-npmdoc-parse5)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "parse5": "*",
